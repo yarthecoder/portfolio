@@ -1,0 +1,30 @@
+/* ----------------------- */
+/* -- About Page --------- */
+
+main {
+  display: flex;              
+  flex-direction: column;     
+  padding: 40px 40px;
+  max-width: 900px;
+  margin: 0 auto;  
+}
+main h1 {
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  margin-bottom: 50px;
+}
+main h2 {
+  color: rgb(200, 0, 255);
+  text-align: left;
+  margin-bottom: 20px;
+}
+main p {
+  color: light rgb(128, 128, 128);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  text-align: justify;
+  margin-bottom: 50px;
+  line-height: 1.5rem;
+}
+main .commit {
+    text-align: right;
+}

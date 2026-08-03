@@ -1,0 +1,356 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px 40px;
+    background: white;
+    color: var(--text-color);
+    line-height: 1.5rem;
+}
+
+#heading {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+        background-color: transparent;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+}
+
+:root {
+    --bg-color: rgb(240, 240, 240);
+    --surface-color: white;
+    --text-color: black;
+    --accent-color: dodgerblue;
+    --border-color: rgb(160, 158, 158);
+
+    --font-body: 1rem;
+    --container-width: 75rem;
+    --container-padding: 1rem;
+    --space-sm: .5rem;
+
+    --main-width: 440px;
+    --canvasBody-height: 400px;
+
+    --navElMargin: 0px 0px;
+    --footersElMargin: 0px 5px;
+
+}
+
+
+/* -- Expand section -- */
+
+.expand {
+    --main-width: auto;
+    --canvasBody-height: auto;
+    --navElMargin: 5px 20px;
+    --footersElMargin: 5px 20px;
+
+    #naviLinks {
+        flex-wrap: wrap;
+    }
+}
+
+.container {
+    width: min(
+        100% - (var(--container-padding) * 2),
+        var(--container-width)
+    );
+    margin-inline: auto;
+}
+
+main {
+    background-color: beige;
+    width: min(100%, var(--main-width));
+    padding: 20px;
+
+    p {
+        text-align: justify;
+    }
+}
+
+
+/* -- Themes section -- */
+
+.theme-dark {
+    --bg-color: rgb(20, 20, 20);
+    --surface-color: black;
+    --text-color: silver;
+    --border-color: rgb(46, 45, 45);
+
+    header {
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    #logo {
+        color: rgb(0, 255, 0);
+    }
+
+    #naviLinks a {
+        color: rgb(200, 50, 250);
+    }
+
+    #footer-social a {
+        .fa-google { color: #EA4335; }
+        .fa-github { color: #6e5999; }
+        .fa-linkedin { color: #0A66C2; }
+        .fa-facebook { color: #1877F2; }
+        .fa-instagram { color: #E1306C; }
+        .fa-youtube { color: #FF0000; }
+        .fa-tiktok { color: #69C9D0; }
+    }  
+}
+
+.theme-ocean {
+    --bg-color: rgb(0, 190, 255);
+    --surface-color: rgb(40, 170, 250);
+    --text-color: black;
+    --border-color: lightblue;
+}
+
+.theme-coffee {
+    --bg-color: rgb(90, 50, 50);
+    --surface-color: rgb(70, 45, 45);
+    --text-color: white;
+    --border-color: rgb(149, 76, 76);
+}
+.theme-homebrew {
+    --bg-color: rgb(20, 20, 20);
+    --surface-color: black;
+    --text-color: rgb(40, 254, 20);
+    --border-color: rgb(67, 81, 67);
+}
+
+
+
+/* ------------------------------- */
+/* ---- Demostration Section ----- */
+
+/* -- demo canvas is my small webpage's body -- */
+#demoCanvasBody {
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-size: var(--font-body);
+    height: var(--canvasBody-height);
+    margin: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+}
+
+
+/* -- Demo Header section ------ */
+
+header {
+    background: var(--surface-color);
+    padding: var(--space-sm);
+    border-bottom: 0.5px solid var(--border-color);
+
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    flex-shrink: 0;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--text-color);
+    }
+
+    button {
+        text-decoration: none;
+        background-color: transparent;
+        color: var(--text-color);
+        border: none;
+        font-size: 1.1rem;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: background-color 0.3s ease-out;
+    }
+
+    section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+
+#naviLinks {
+    background-color: var(--surface-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        margin: var(--navElMargin);
+        padding: 0px 6px;
+        transition: background-color 0.2s ease-in-out;
+        border-radius: 5px;
+    }
+}
+
+
+/* -- Demo Main section ----- */
+
+#main {
+    background-color: var(--bg-color);
+    padding: 20px 40px;
+}
+
+#heroSection {
+    h3 { 
+        text-align: center;
+    }
+
+    p { 
+        text-align: justify;
+        margin-bottom: 50px;
+    }
+}
+
+.featureSection {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+    img {
+        background-color: rgb(0, 118, 228);
+        width: min(100%, 220px);
+        height: 120px;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto;
+        border-radius: 0.5rem;
+    }
+}
+
+.projectCard {
+    background-color: var(--surface-color);
+    border: 0.5px solid var(--border-color);;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+
+    h4 {
+        margin-top: 0;
+    }
+}
+
+
+/* -- Demo Footer section ----- */
+
+footer {
+    box-sizing: border-box;
+    background-color: var(--surface-color);
+    border-top: 0.5px solid var(--border-color);;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 0;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    a {
+        text-decoration: none;
+        color: var(--text-color);
+        margin: var(--footersElMargin);
+        padding: 3px 5px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+}
+
+#footer-social,
+#footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+
+.footer-copy {
+    display: block;
+    text-align: center;
+}
+
+header button:hover,
+#naviLinks a:hover,
+#footer-social a:hover,
+#footer-links a:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+
+
+/* ------------------------- */
+/* ---- Commit Section ----- */
+
+.commitSection {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.readHideBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0px;
+    
+}
+
+#readMore {
+    display: none;
+    border-top: 1px dashed black;
+    border-bottom: 1px dashed black;
+
+    div {
+        margin: 0px 50px;
+        padding: 10px;
+        background-color: rgb(176, 176, 175);
+        color: #1877F2;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+    .readHideBtn {
+        display: block;
+        margin-left: auto;
+        margin-bottom: 10px;
+    }
+}
+#readMore.show {
+    display: block;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>like and comment box</title>
+</head>
+
+<body>
+<main>
+
+    <!-- Small Header ---------- -->
+
+    <h2>2. Like and Comment Box</h2>
+
+    <p>
+        Building like and comment box by using <strong>DOM manipulation</strong>.
+    </p>
+    <p>
+        You can like the post and add comments interactively. At the moment, 
+        any likes or comments you make will disappear if you refresh or reload the page 
+        because they are not saved yet. 
+    </p>
+    <p>
+        The current likes and comments are manually added as placeholder data. 
+        I'll update this feature once I learn and implement Local Storage or connect it to a database, 
+        so your interactions will be saved permanently. Stay tuned for future updates!
+    </p>
+
+    <!-- ------- ------- ------- -->
+    <!-- ------- ------- ------- -->
+
+
+
+    <!-- Demonstration Body-main  ----- -->
+
+    <div class="playground">
+        <h3>DOM is Fun!</h3>
+        <p>Manipulating the DOM has never been more enjoyable! Do you agree with me?</p>
+        
+        <!-- Like and Comment Box Demo -->
+        <section class="demo-like-comment-box">
+
+            <span id="demoLikeCount">70</span >
+            <button id="demoLikeBtn">🤍 Like</button>
+            
+            <span id="demoCommentCount">10</span > 
+            <button id="demoCommentBtn">💬</button>
+            <input type="text" placeholder="Enter your comment..." id="demoCommentInput">
+            <button id="demoCommentSubmitBtn"> <i class="fa-solid fa-paper-plane"></i> </button>
+
+        </section>
+
+        <section id="demoCommentSection">
+            <ul id="demoCommentList">
+                <li>Great job! I love how you implemented the like and comment box using DOM manipulation. Keep up the good work!</li>
+                <li>This is a fantastic example of how to use JavaScript to enhance user interaction on a webpage. Well done!</li>
+                <li>I really appreciate the clean and organized code structure. It makes it easy to understand and modify. Excellent work!</li>
+                <li>The like and comment functionality is smooth and responsive. It's impressive how you handled the DOM updates efficiently.</li>
+                <li>I'm inspired by your project! It shows a solid understanding of DOM manipulation concepts. Keep pushing your skills further!</li>
+                <li>Awesome work! The user interface is intuitive, and the like/comment feature adds great interactivity. Looking forward to seeing more projects from you!</li>
+                <li>Fantastic implementation! The way you handled the comment submission and display is very user-friendly. Great job!</li>
+                <li>Impressive work! The like and comment box is a great addition to any webpage. Your code is clean and well-structured. Keep it up!</li>
+                <li>Excellent project! The like and comment functionality is seamless, and the user experience is top-notch. Well done!</li>
+                <li>I'm amazed by your project! The like and comment box is a great example of how to use DOM manipulation effectively. Keep up the fantastic work!</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <!-- ------- ------- ------- -->
+    <!-- ------- ------- ------- -->
+
+
+    
+    <!-- Small Footer -->
+
+    <p id="sourceFiles">
+        Source 📁: <a href="index.html" target="_blank">HTML</a>,
+        <a href="style.css" target="_blank">CSS</a>,
+        <a href="script.js" target="_blank">JS</a>.
+    </p>
+
+    <p id="Commit">Project Commit: 10 July 2026</p>
+
+    <section class="reaction">
+
+        <span id="likeCount">0</span >
+        <button id="likeBtn">🤍 Like</button>
+        
+        <span id="commentCount">0</span > 
+        <button id="commentBtn">💬</button>
+        <input type="text" placeholder="Enter your comment..." id="commentInput">
+        <button id="commentSubmitBtn"> <i class="fa-solid fa-paper-plane"></i> </button>
+    
+    </section>
+
+    <section id="commentSection">
+        <ul id="commentList"></ul>
+    </section>
+
+
+    <!-- ------- ------- ------- -->
+    <!-- ------- ------- ------- -->
+
+    
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>

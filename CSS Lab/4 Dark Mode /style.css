@@ -1,0 +1,304 @@
+body {
+    box-sizing: border-box;
+    padding:20px;
+}
+
+main {
+    background-color: beige;
+    box-sizing: border-box;
+    width: 440Px;
+    padding: 20px;
+
+    p {
+        text-align: justify;
+    }
+}
+
+#sourceFiles {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+#readMore {
+    display: none;
+    border-top: 1px dashed black;
+    border-bottom: 1px dashed black;
+
+    div {
+        margin: 0px 50px;
+        padding: 10px;
+        background-color: rgb(176, 176, 175);
+        color: #1877F2;
+        text-align: center;
+        border-radius: 10px;
+    }
+}
+#readMore.show {
+    display: block;
+}
+
+#demoCanvas {
+    box-sizing: border-box;
+    background-color: silver;
+    color: black;
+    width: 400px;
+    height: auto;
+    max-height: 400px;
+    margin: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+}
+
+
+/* ----------------------------- */
+/* ---- Demo Header section ---- */
+
+#demoHeader {
+    background-color: silver;
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    flex-shrink: 0;
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    button {
+        text-decoration: none;
+        background-color: transparent;
+        color: black;
+        border: none;
+        font-size: 1.1rem;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+}
+
+
+#naviLinks{
+    background-color: silver;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-top: 0.5px solid grey;
+    border-bottom: 0.5px solid rgb(64, 64, 64);
+    position: sticky;
+    top: 50px;
+    z-index: 998;
+    flex-shrink: 0;
+
+    a{
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+}
+
+
+
+/* ------------------------------ */
+/* ------ Demo Main section ----- */
+
+#demoMain {
+    background-color: rgb(230, 232, 233);
+    padding: 20px 40px;
+}
+
+#heroSection {
+    h3 { 
+        text-align: center;
+    }
+
+    p { 
+        text-align: justify;
+        margin-bottom: 50px;
+    }
+}
+
+.featureSection {
+    span {
+        display: block;
+        padding-bottom: 10px;
+        margin-bottom: 50px;
+        border-bottom: 0.5px solid gray;
+    }
+    
+    img {
+        background-color: rgb(0, 118, 228);
+        width: 100px;
+        height: 60px;
+    }
+}
+
+
+
+/* ------------------------------- */
+/* ----- Demo Footer section ----- */
+
+#demoFooter {
+    box-sizing: border-box;
+    background-color: silver;
+    border-top: 0.5px solid grey;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 20px;
+    gap: 10px;
+    
+    a {
+        text-decoration: none;
+        color: black;
+    }
+}
+
+#footer-social a{
+    border-radius: 5px;
+    margin: 5px 5px;
+    padding: 3px 5px;
+}
+
+#footer-links a{
+   margin: 10px;
+   padding: 3px 5px;
+   border-radius: 5px;
+}
+
+
+#demoHeader button:hover,
+#naviLinks a:hover,
+#footer-social a:hover,
+#footer-links a:hover {
+    background-color: black;
+    color: white;
+}
+
+
+
+
+
+
+/* ------------------------ */
+/* ----- Main section ----- */
+
+/* ---- Dark Mode On ---- */
+
+#demoCanvas.dark {
+
+    background-color: black;
+
+    #demoHeader {
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+
+        a {
+            color: rgb(0, 255, 0);
+        }
+
+        button {
+            color: rgb(0, 235, 255);
+        }
+        
+        button:hover {
+            color: white;
+            background-color: transparent;
+        }
+    }
+
+
+    #naviLinks {
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-top: 0.5px solid rgba(0, 235, 255, 0.3);
+        border-bottom: 0.5px solid rgba(0, 235, 255, 0.3);
+
+        a {
+            color: rgb(200, 50, 250);
+        }
+        a:hover {
+            color: rgb(255, 255, 255);
+            background-color: transparent;
+        }
+    }
+
+
+
+    #demoMain {
+        background-color: black;
+
+        color: rgb(227, 227, 227);
+        h3 {
+            color: rgb(0, 235, 255);
+        }
+        h4 {
+            color: blueviolet;
+        }
+        img {
+            background-color: blueviolet;
+        }
+        span {
+            border-bottom: 0.5px solid blueviolet;
+        }
+    }
+
+
+
+    #demoFooter {
+        background-color: rgba(0, 0, 0);
+        border-top: 0.5px solid rgba(0, 235, 255, 0.3);
+
+        #footer-social a {
+
+            .fa-google { color: #EA4335; }
+            .fa-github { color: #6e5999; }
+            .fa-linkedin { color: #0A66C2; }
+            .fa-facebook { color: #1877F2; }
+            .fa-instagram { color: #E1306C; }
+            .fa-youtube { color: #FF0000; }
+            .fa-tiktok { color: #69C9D0; }
+
+            :hover {
+                background-color: transparent;
+                color: white;
+            }
+
+        }  
+
+        #footer-links a, .footer-copy {
+            color: rgb(0, 251, 255);
+        }
+
+        #footer-links a:hover, .footer-copy:hover {
+            background-color: transparent;
+            color: rgb(255, 255, 255);
+        }
+    } 
+}
+
+
+
+
+

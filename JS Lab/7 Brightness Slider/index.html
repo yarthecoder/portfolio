@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <title>Brightness Slider</title>
+  </head>
+  
+  <body>
+    <main>
+      <section id="heading">
+      <h2>7. Brightness Slider</h2>
+      <button id="expandBtn">
+        <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+      </button>
+      </section>
+      <p>
+        Building an interactive brightness slider using CSS variables and JavaScript DOM manipulation.
+      </p>
+      <p>
+        At first, I thought this project was only about changing the brightness of a light bulb. 
+        However, while building it, I learned much more than I expected.
+      </p>
+
+
+      <!---------------------------------->
+      <!----- Demostration Section ------->
+      <div id="demoCanvasBody">
+        <section>
+          <i id="light" class="fa-solid fa-lightbulb"></i>
+          <button id="voltageBtn">Over Voltage</button>
+        </section>
+          <input type="range" id="dragBar" name="brightness" min="0" max="100" value="30" step="1">
+          <label for="dragBar" id="brightnessLabel"></label>
+      </div>
+      
+
+
+      <!---------------------------->
+      <!----- Commit Section ------->
+      <section class="commitSection">
+        <span>
+          Source:
+          <a href="index.html" target="_blank">HTML</a>,
+          <a href="style.css" target="_blank">CSS</a>,
+          <a href="script.js" target="_blank">JS</a>.
+        </span>
+        <span>
+          Version 2
+        </span>
+      </section>
+
+      <section class="commitSection"> 
+        <span id="Commit">Project Commit: 19 July 2026.</span>
+        <span> 
+          <button class="readHideBtn">Read More ▼</button>
+        </span>
+      </section>
+      
+
+      <section id="readMore">
+        <h2>What I learned from this Project</h2>
+
+        <ul>
+          <li>
+            Using range type input to create interactive controls.
+          </li>
+          <li>
+            Updating CSS Custom Properties (--variables) with JavaScript.
+          </li>
+          <li>
+            Controlling multiple UI elements from a single value (light bulb, background, labels).
+          </li>
+          <li>
+            Thinking about state (normal, broken) instead of writing separate code for every action.
+          </li>
+          <li>
+            Using setTimeout() to create delayed animations and timed events.
+          </li>
+          <li>
+            Dynamically changing text, colors, and button labels with JavaScript.
+          </li>
+          <li>
+            Reusing the same HTML elements by changing classes and content instead of creating new elements.
+          </li>
+        </ul>
+        <p>
+          This project looks simple, but there is a lot happening underneath. 
+          It helped me think less about writing code line by line and more about designing reusable functions, 
+          managing application state, and building interactive user interfaces. 
+          It also reminded me that practice teaches far more than memorizing syntax.
+        </p>
+
+        <button class="readHideBtn">Hide ▲</button>
+      </section>
+
+    </main>
+    <script src="script.js"></script>
+  </body>
+
+</html>

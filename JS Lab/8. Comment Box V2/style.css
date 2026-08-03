@@ -1,0 +1,349 @@
+*{
+    box-sizing: border-box;
+}
+
+:root {
+    --main-width: 440px;
+    --canvasBody-height: auto;
+
+    --bg-color: lightgrey;
+    --surface-color: rgb(230, 230, 230);
+}
+
+body {
+    margin: 0;
+    padding: 20px 40px;
+    background: white;
+    line-height: 1.5rem;
+}
+
+#heading {
+    display: flex;
+    justify-content: space-between;
+
+    #expandBtn {
+        display: none;
+        background-color: transparent;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+}
+
+/* -- Expand section -- */
+.expand {
+    --main-width: auto;
+    --canvasBody-height: auto;
+}
+
+main {
+    background-color: beige;
+    width: min(100%, var(--main-width));
+    padding: 20px;
+
+    p {
+        text-align: justify;
+    }
+}
+
+
+
+
+/* ------------------------- */
+/* ---- Commit Section ----- */
+.commitSection {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.readHideBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0px;
+    
+}
+
+#readMore {
+    display: none;
+    border-top: 1px dashed black;
+    border-bottom: 1px dashed black;
+
+    div {
+        margin: 0px 50px;
+        padding: 10px;
+        background-color: rgb(176, 176, 175);
+        color: #1877F2;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+    .readHideBtn {
+        display: block;
+        margin-left: auto;
+        margin-bottom: 10px;
+    }
+}
+#readMore.show {
+    display: block;
+}
+
+
+/* ------------------------------- */
+/* ---- Demostration Section ----- */
+.demoCanvasBody {
+    background-color: var(--bg-color);
+    height: 400px;
+    width: 400px;
+    margin: 20px 0px;
+    padding: 5px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+.post-header {
+    height: 50px;
+    background-color: aquamarine;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    gap: 10px;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+
+    .avatar {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-color: rgb(164, 150, 150);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgb(200, 200, 200);
+        flex-shrink: 0;
+    }
+
+    .username {
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+}
+
+.post-content {
+    
+    background-color: rgb(189, 160, 122);
+    margin: 3px 0px;
+    padding: 10px;
+
+}
+
+/* -- Post-Footer Css Nested Structure --
+/* --| .post footer
+/* --------| .reaction-bar
+/* --------| .comment-section
+/* --------------| .comment-area
+/* --------------| .input-area         -- */
+.post-footer {
+    height: 50px;
+    background-color: aquamarine;
+    display: flex;
+    align-items: center;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+
+    /* -- Reaction Buttons Bar -- */
+    .reaction-bar {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px;
+        width: 100%;
+
+        span {
+            margin-left: 10px;
+        }
+
+        button {
+            background-color: transparent;
+            color: grey;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-right: 10px;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+
+        .shareBtn:hover, .commentBtn:hover {
+            color: black;
+        }
+    }
+}
+
+
+.commentSection {
+    /* -- Comment Frame -- */
+    display: none;
+    background-color: aquamarine; 
+    position: absolute;
+    left: 5px;
+    right: 5px;
+    height: 300px;
+    transition: top 0.5s ease-in;
+    padding: 5px 0px;
+    border-radius: 0.5rem;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 3;
+
+    .dragHandle {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 5px;
+    
+        .handle {
+            width: 50px;
+            height: 5px;
+            background: gray;
+            border-radius: 100px;
+            cursor: grab;
+
+            &:active {
+                cursor: grabbing;
+            }
+
+            &:hover {
+                transform: scale(1.1);
+                background-color: rgb(100, 100, 100);
+            }
+        }
+    }
+
+
+    /* -- Comment list -- */
+    .comment-area {
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+        min-width: 0;
+
+        /* -- commemt card -- */
+        .comment-card {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 10px;
+            border-top-right-radius: 0.2rem;
+            margin: 10px;
+
+            .avatar {
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                background-color: rgb(164, 150, 150);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                color: rgb(200, 200, 200);
+                flex-shrink: 0;
+            }
+
+            .comment-structure {
+                background-color: rgb(220, 232, 232);
+                border-top-right-radius: 1rem;
+                padding: 5px;
+                flex: 1;
+                min-width: 0;
+                
+                .comment-header {
+                    span {
+                        margin-right: 5px;
+                    }           
+                }
+                
+                .comment-text {
+                    margin: 5px;
+                    word-break: break-word;
+                }
+
+                button {
+                    cursor: pointer;
+                    margin-right: 5px;
+                }
+            }
+
+            .reply {
+                display: flex;
+                gap: 5px;
+                flex-direction: row;
+                margin-left: 45px;
+                flex-basis: 100%;
+                align-items: flex-start;
+
+                .comment-structure {
+                    background-color: rgb(177, 177, 177);
+                }
+            }
+
+        }
+    }
+
+
+    /* -- Comment input & submitBtn -- */
+    .input-area {
+        background-color: rgb(240, 240, 240);
+        border-radius: 0.5rem;
+        width: 100%;
+        display: flex;
+        margin-top: 3px;
+        flex-shrink: 0;
+
+        .commentInput {
+            background-color: rgb(240, 240, 240);
+            width: 100%;
+            padding: 15px;
+            border: none;
+            outline: none;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .commentSubmitBtn {
+            background-color: transparent;
+            border: none;
+            color: gray;
+            font-size: 1rem;
+            padding: 0px 15px;
+            cursor: pointer;
+
+            &:hover {
+                color: black;
+                transform: scale(1.1);
+            }
+        }
+    }
+
+
+}   
+
+.commentSection.show {
+    display: flex;
+}
+
+
+
+
+
+
+

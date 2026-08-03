@@ -1,0 +1,31 @@
+body {
+    box-sizing: border-box;
+    padding:20px;
+}
+
+main {
+    background-color: beige;
+    box-sizing: border-box;
+    width: 440Px;
+    padding: 20px;
+}
+
+
+div {
+    box-sizing: border-box;
+    background-color: lightgrey;
+    width: 400px;
+    height: auto;
+    max-height: 400px;
+    margin: 20px 0px;
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+
+
+

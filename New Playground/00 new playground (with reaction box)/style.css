@@ -1,0 +1,117 @@
+body {
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+main {
+    background-color: beige;
+    box-sizing: border-box;
+    width: 440Px;
+    padding: 10px;
+}
+
+
+div {
+    box-sizing: border-box;
+    background-color: lightgrey;
+    width: 400px;
+    height: auto;
+    max-height: 400px;
+    margin: 20px 0px;
+    padding: 0px 20px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --------------------------------- */
+/* -- like and comment section ----- */
+
+.reaction {
+    margin-top: 10px;
+    box-sizing: border-box;
+    padding: 10px 10px;
+    width: 400px;
+    border-top: 1px solid darkgrey;
+    border-bottom: 1px solid darkgrey;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.reaction button {
+    background-color: transparent;
+    color: grey;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-right: 20px;
+}
+.reaction button:hover {
+    color:black;
+}
+
+
+
+#commentInput {
+    width: 150px;
+    margin-left: 10px;
+    padding: 5px;
+}
+
+#commentSubmitBtn {
+    background-color: transparent;
+    border: none;
+    color: gray;
+    font-size: 1rem;
+    cursor: pointer;
+}
+#commentSubmitBtn:hover {
+    color: black;
+}
+
+#commentSection {
+    display: none;
+    background-color: rgb(240, 240, 240);
+    box-sizing: border-box;
+    margin-top: 10px;
+    padding: 10px;
+    width: 400px;
+    height: 100px;
+    overflow: auto;
+    border: 0.5px solid darkgrey;
+    border-radius: 5px;
+}
+#commentSection.show {
+    display: block;
+}
+
+li {
+    list-style-type: "👩‍💼: ";
+    padding: 5px 5px;
+    width: 85%;
+    margin-bottom: 10px;
+    overflow-wrap: break-word;
+    border-bottom: 0.5px solid darkgrey;
+}
+

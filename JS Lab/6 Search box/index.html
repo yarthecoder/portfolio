@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <title>Search Box</title>
+  </head>
+  
+  <body>
+    <main>
+      <section id="heading">
+      <h2>6. Search Box</h2>
+      <button id="expandBtn">
+        <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+      </button>
+      </section>
+      <p>
+        Building a simple search box using JavaScript arrays and DOM manipulation.
+      </p>
+      <p>
+        This project allows users to search for a fruit by name. When a match is found, 
+        the page automatically scrolls to the corresponding HTML section. If no match is found, 
+        an error message is displayed inside the input field and automatically selected, 
+        allowing the user to immediately type another search without manually clearing the text.
+      </p>
+
+
+      <!---------------------------------->
+      <!----- Demostration Section ------->
+      <div id="demoCanvasBody">
+        <header>
+          <div class="container">
+            <section id="search-box">
+              <input type="text" placeholder="Search your fruits ...">
+              <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </section>
+          </div>
+        </header>
+
+        <div id="main">
+          <div id="hero">
+            <h1>All about Fruits.</h1>
+            <p>
+              Let's explore fruits from around the world!
+              Discover different kinds of fruits, learn interesting facts about them, and find your favorites.
+              Do you like fruits? What's your favorite fruit?
+            </p>
+          </div>
+
+        <div class="container">
+            <section id="apple" class="fruit-card">
+                <h2>🍎 Apple</h2>
+                <p><strong>Region:</strong> Central Asia</p>
+                <p><strong>Color:</strong> Red, Green, Yellow</p>
+                <p><strong>Taste:</strong> Sweet with a slight tart flavor.</p>
+                <p>Apples are one of the most popular fruits in the world and are rich in fiber and vitamin C.</p>
+            </section>
+
+            <section id="banana" class="fruit-card">
+                <h2>🍌 Banana</h2>
+                <p><strong>Region:</strong> Southeast Asia</p>
+                <p><strong>Color:</strong> Yellow</p>
+                <p><strong>Taste:</strong> Sweet and creamy.</p>
+                <p>Bananas are an excellent source of potassium and provide quick energy.</p>
+            </section>
+
+            <section id="orange" class="fruit-card">
+                <h2>🍊 Orange</h2>
+                <p><strong>Region:</strong> China</p>
+                <p><strong>Color:</strong> Orange</p>
+                <p><strong>Taste:</strong> Sweet and juicy.</p>
+                <p>Oranges are famous for their high vitamin C content.</p>
+            </section>
+
+            <section id="mango" class="fruit-card">
+                <h2>🥭 Mango</h2>
+                <p><strong>Region:</strong> South Asia</p>
+                <p><strong>Color:</strong> Green, Yellow, Orange</p>
+                <p><strong>Taste:</strong> Sweet and tropical.</p>
+                <p>Mango is known as the "King of Fruits" in many countries.</p>
+            </section>
+
+            <section id="grape" class="fruit-card">
+                <h2>🍇 Grape</h2>
+                <p><strong>Region:</strong> Mediterranean Region</p>
+                <p><strong>Color:</strong> Green, Red, Purple</p>
+                <p><strong>Taste:</strong> Sweet and juicy.</p>
+                <p>Grapes are eaten fresh or used to make juice, raisins, and wine.</p>
+            </section>
+
+            <section id="pineapple" class="fruit-card">
+                <h2>🍍 Pineapple</h2>
+                <p><strong>Region:</strong> South America</p>
+                <p><strong>Color:</strong> Brown outside, Yellow inside</p>
+                <p><strong>Taste:</strong> Sweet and tangy.</p>
+                <p>Pineapples contain bromelain, an enzyme that helps digestion.</p>
+            </section>
+
+            <section id="watermelon" class="fruit-card">
+                <h2>🍉 Watermelon</h2>
+                <p><strong>Region:</strong> Africa</p>
+                <p><strong>Color:</strong> Green outside, Red inside</p>
+                <p><strong>Taste:</strong> Sweet and refreshing.</p>
+                <p>Watermelon is made up of over 90% water, making it perfect for hot weather.</p>
+            </section>
+
+            <section id="strawberry" class="fruit-card">
+                <h2>🍓 Strawberry</h2>
+                <p><strong>Region:</strong> Europe</p>
+                <p><strong>Color:</strong> Red</p>
+                <p><strong>Taste:</strong> Sweet with slight tartness.</p>
+                <p>Strawberries are rich in antioxidants and vitamin C.</p>
+            </section>
+
+            <section id="kiwi" class="fruit-card">
+                <h2>🥝 Kiwi</h2>
+                <p><strong>Region:</strong> China</p>
+                <p><strong>Color:</strong> Brown outside, Green inside</p>
+                <p><strong>Taste:</strong> Sweet and tangy.</p>
+                <p>Kiwis have more vitamin C than many citrus fruits.</p>
+            </section>
+
+            <section id="cherry" class="fruit-card">
+                <h2>🍒 Cherry</h2>
+                <p><strong>Region:</strong> Europe and Western Asia</p>
+                <p><strong>Color:</strong> Red, Dark Red</p>
+                <p><strong>Taste:</strong> Sweet or tart.</p>
+                <p>Cherries are often enjoyed fresh, dried, or in desserts.</p>
+            </section>
+        </div>
+        </div>
+
+      </div>
+
+
+      <!---------------------------->
+      <!----- Commit Section ------->
+      <section class="commitSection">
+        <span>
+          Source:
+          <a href="index.html" target="_blank">HTML</a>,
+          <a href="style.css" target="_blank">CSS</a>,
+          <a href="script.js" target="_blank">JS</a>.
+        </span>
+        <span>
+          Version 1
+        </span>
+      </section>
+
+      <section class="commitSection"> 
+        <span id="Commit">Project Commit: 17 July 2026.</span>
+        <span> 
+          <button class="readHideBtn">Read More ▼</button>
+        </span>
+      </section>
+      
+
+      <section id="readMore">
+        <h2>What I learned from this Project</h2>
+
+        <ul>
+          <li>
+            Reading user input with .value
+          </li>
+          <li>
+            Cleaning user input using .trim() and .toLowerCase()
+          </li>
+          <li>
+            Using a guard clause to prevent empty searches
+          </li>
+          <li>
+            Storing searchable data in a JavaScript array
+          </li>
+          <li>
+            Selecting HTML elements dynamically with document.getElementById()
+          </li>
+          <li>
+            Improving user experience by selecting the error message with .select() so users can immediately type a new search
+          </li>
+        </ul>
+        <p>
+          This project taught me to think like a developer instead of copying code. Rather than memorizing methods, 
+          I learned to break the problem into smaller steps:
+          <ol>
+            <li>
+              Read the user's input.
+            </li>
+            <li>
+              Validate the input.
+            </li>
+            <li>
+              Search the data.
+            </li>
+            <li>
+              Find the matching HTML element.
+            </li>
+            <li>
+              Navigate to the correct section.
+            </li>
+            <li>
+              Handle the case when no result is found.
+            </li>
+          </ol>
+          Learning through questions and problem-solving helped me understand why each method is used, not just how to write it. 
+        </p>
+
+        <button class="readHideBtn">Hide ▲</button>
+      </section>
+
+    </main>
+    <script src="script.js"></script>
+  </body>
+
+</html>

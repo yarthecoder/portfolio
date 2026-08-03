@@ -1,0 +1,177 @@
+*{
+    box-sizing: border-box;
+}
+
+:root {
+    --main-width: 440px;
+    --canvasBody-height: 400px;
+
+    --container-width: 75rem;
+    --container-padding: 1rem;
+}
+
+body {
+    margin: 0;
+    padding: 20px 40px;
+    background: white;
+    line-height: 1.5rem;
+}
+
+#heading {
+    display: flex;
+    justify-content: space-between;
+
+    #expandBtn {
+        background-color: transparent;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+}
+
+/* -- Expand section -- */
+.expand {
+    --main-width: auto;
+    --canvasBody-height: auto;
+}
+
+main {
+    background-color: beige;
+    width: min(100%, var(--main-width));
+    padding: 20px;
+
+    p {
+        text-align: justify;
+    }
+}
+
+
+/* ------------------------- */
+/* ---- Commit Section ----- */
+.commitSection {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.readHideBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0px;
+    
+}
+
+#readMore {
+    display: none;
+    border-top: 1px dashed black;
+    border-bottom: 1px dashed black;
+
+    div {
+        margin: 0px 50px;
+        padding: 10px;
+        background-color: rgb(176, 176, 175);
+        color: #1877F2;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+    .readHideBtn {
+        display: block;
+        margin-left: auto;
+        margin-bottom: 10px;
+    }
+}
+#readMore.show {
+    display: block;
+}
+
+
+
+/* ------------------------------- */
+/* ---- Demostration Section ----- */
+#demoCanvasBody {
+    background-color: lightgrey;
+    height: var(--canvasBody-height);
+    margin: 20px 0px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.container {
+    width: min(
+        100% - (var(--container-padding) * 2),
+        var(--container-width)
+    );
+    margin-inline: auto;
+}
+
+/* -- SEARCH BOX -- */
+header {
+    background-color: rgb(13, 255, 0);
+    border: 5px solid lightgrey;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+    .container {
+        display: flex;
+        justify-content: center;
+        margin: 25px 0px;
+    }
+}
+
+#search-box {
+    display: flex;
+    align-items: center;
+    padding: 0px;
+    width: fit-content;
+    padding: 0px 5px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+
+    #searchBtn {
+        background-color: transparent;
+        color: gray;
+        border: none;
+        border-left: 2px solid rgba(50, 50, 50, 0.3);
+        font-size: 1.6rem;
+        cursor: pointer;
+
+        :hover {
+            color: black;
+        }
+    }
+
+    input {
+        background: transparent;
+        border: none;
+        width: 230px;
+        padding-left: 10px;
+        color: rgb(0, 0, 0);
+        font-size: 1.2rem;
+        outline: none;
+    }
+}
+
+#main {
+    text-align: center;
+    padding: 0px 20px;
+}
+
+#hero p {
+    margin-bottom: 50px;
+}
+ 
+.fruit-card {
+    background-color: rgb(240, 240, 240);
+    padding: 20px;
+    margin: 20px 0px;
+    border-radius: 1rem;
+}
+

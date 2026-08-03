@@ -1,0 +1,147 @@
+body {
+    box-sizing: border-box;
+    padding: 20px 20px;
+}
+
+main {
+    background-color: beige;
+    box-sizing: border-box;
+    width: 440Px;
+    padding: 20px;
+    text-align: justify;
+}
+
+
+
+div {
+    box-sizing: border-box;
+    background-color: lightgrey;
+    width: auto;
+    max-width: 400px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0px;
+    padding: 20px 20px;
+    overflow-x: hidden;
+
+}
+
+h3 {
+    display: inline-flex;
+    margin-left: 15px;
+}
+h4 {
+    display: inline-flex;
+    color: blue;
+}
+
+
+#photoFrame {
+    height: 360px;
+    margin: 0px;
+    padding: 0px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 175px 175px;
+    gap: 5px;
+    grid-template-areas: "box-1 box-1 box-2"
+    "box-3 box-4 box-5";
+}
+
+#photoFrame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+
+
+
+
+
+
+
+
+
+/* --------------------------------- */
+/* -- like and comment section ----- */
+
+.reaction {
+    margin-top: 10px;
+    box-sizing: border-box;
+    padding: 10px 10px;
+    width: 400px;
+    border-top: 1px solid darkgrey;
+    border-bottom: 1px solid darkgrey;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.reaction button {
+    background-color: transparent;
+    color: grey;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-right: 20px;
+}
+.reaction button:hover {
+    color:black;
+}
+
+
+#commentInput {
+    width: 150px;
+    margin-left: 10px;
+    padding: 5px;
+}
+
+#commentSubmitBtn {
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    color: gray;
+    font-size: 1rem;
+    cursor: pointer;
+}
+#commentSubmitBtn:hover {
+    color: black;
+}
+
+
+#commentSection {
+    display: none;
+
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    
+    background-color: rgb(240, 240, 240);
+    box-sizing: border-box;
+    margin-top: 10px;
+    padding: 10px 10px;
+    width: 360px;
+    height: auto;
+    max-height: 100px;
+    overflow: auto;
+    border: 0.5px solid darkgrey;
+    border-radius: 5px;
+}   
+
+#commentSection.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+li {
+    list-style-type: "👩‍💼: ";
+    padding: 5px 5px;
+    width: 85%;
+    margin-bottom: 10px;
+    overflow-wrap: break-word;
+    border-bottom: 0.5px solid darkgrey;
+}
+

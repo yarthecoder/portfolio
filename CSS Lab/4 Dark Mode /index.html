@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Dark Mode</title>
+</head>
+<body>
+
+
+<main>
+
+    <!--  Heading and Description ---------- -->
+
+    <h2>4. Dark Mode</h2>
+
+    <p>
+        In this project, I learned how to organize larger DOM projects, use CSS Nesting to keep my styles clean, 
+        reduce repetitive JavaScript, and manage theme changes more efficiently. One of the most satisfying 
+        moments was seeing the entire webpage switch between light and dark themes with only a few lines of JavaScript.
+    </p>
+
+    <!-- ------- ------- ------- -->
+    <!-- ------- ------- ------- -->
+
+
+    <!-- Demo Body-main  ----- -->
+
+    <div id="demoCanvas">
+
+        <section id="demoHeader">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            <h3><a href="#">yarTheJourney</a></h3>
+            <button id="dkMdBtn"><i class="fa-solid fa-circle-half-stroke"></i></button>
+        </section>
+        <nav id="naviLinks">
+            <a href="#">Home</a>
+            <a href="#">Projects</a>
+            <a href="#">Games</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+
+
+
+
+        <div id="demoMain">
+            <!-- Hero intro paragraph for the homepage -->
+            <section id="heroSection">
+                <h3>Welcome to my website</h3>
+                <p>
+                    I build creative web projects and share my learning journey through practical UI experiments, 
+                    useful interactions, and polished small websites.
+                </p>
+            </section>
+
+            <!-- Featured projects paragraph for the homepage -->
+            <section class="featureSection">
+                <h3>Featured Projects</h3>
+
+                <div>
+                    <h4>Dark Mode Toggle</h4>
+                    <img src="https://via.placeholder.com/250x120.png?text=Dark+Mode+Preview" alt="Dark mode toggle preview">
+                    <p>A clean theme switcher with smooth visual transitions and modern styling.</p>
+                    <span>UI / JavaScript</span>
+                </div>
+
+                <div>
+                    <h4>Light Bulb Effect</h4>
+                    <img src="https://via.placeholder.com/250x120.png?text=Light+Bulb+Preview" alt="Light bulb effect preview">
+                    <p>An interactive idea that turns a simple design into a playful experience.</p>
+                    <span>DOM / CSS</span>
+                </div>
+
+                <div>
+                    <h4>Search Box</h4>
+                    <img src="https://via.placeholder.com/250x120.png?text=Search+Box+Preview" alt="Search box preview">
+                    <p>A useful and responsive search experience built for fast navigation.</p>
+                    <span>Input / Filter</span>
+                </div>
+
+                <h3>Featured Game Projects</h3>
+
+                <div>
+                    <h4>Tic Tac Toe</h4>
+                    <img src="https://via.placeholder.com/250x120.png?text=Tic+Tac+Toe+Preview" alt="Tic tac toe preview">
+                    <p>A simple but fun game project I want to build to practice logic, animation, and user interaction.</p>
+                    <span>Game / JavaScript</span>
+                </div>
+
+                <div>
+                    <h4>Memory Match</h4>
+                    <img src="https://via.placeholder.com/250x120.png?text=Memory+Match+Preview" alt="Memory match preview">
+                    <p>I also want to create a memory card game to explore timing, scoring, and playful UI design.</p>
+                    <span>Game / CSS</span>
+                </div>
+            </section>
+
+            <!-- Closing paragraph for the homepage -->
+            <p>
+                Every project is designed to improve both style and function while keeping the learning process fun.
+            </p>
+        </div>
+
+
+
+
+        <div id="demoFooter">
+    
+            <!-- Social Media Icons -->
+            <section id="footer-social">
+
+                <a href="mailto:yarthejourney@gmail.com" target="_blank"><i class="fab fa-google"></i></a>
+                <a href="https://github.com/yarcodev" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/yarthejourney/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.facebook.com/yarzarfreeman/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/yarthejourney/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@yarthejourney/" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                
+            </section>
+
+            <!-- Footer Links -->
+            <div id="footer-links">
+                <a href="terms.html">Terms of use</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+        
+            <!-- Copyright -->
+            <a class="footer-copy" href="#">&copy; 2026 yarTheJourney. All rights reserved.</a>
+
+        </div>
+
+
+    </div>
+
+    <!-- ------- ------- ------- -->
+    <!-- ------- ------- ------- -->
+
+
+
+
+
+
+
+
+
+    <!-- Source and Commit Section -->
+
+    <section id="sourceFiles">
+        <span>
+        Source 📁: 
+        <a href="index.html" target="_blank">HTML</a>,
+        <a href="style.css" target="_blank">CSS</a>,
+        <a href="script.js" target="_blank">JS</a>.
+        </span>
+        <span>
+            <button class="readHideBtn">Read More</button>
+        </span>
+    </section>
+
+    <p id="Commit">Project Commit: 13 July 2026.</p>
+
+    <!-- ------- ------- ------- -->
+    <!-- ------- ------- ------- -->
+
+    <section id="readMore">
+        <h2>What I learned from this Project</h2>
+        <p>
+            This project started with a simple idea: building a Dark Mode by using classList.toggle(). 
+            However, while building it, I kept getting new ideas, and it gradually grew into a small interactive webpage 
+            instead of just a single button.
+        </P>
+        <P>
+            The more I built, the more problems I faced, and every problem taught me something new. One of my favorite discoveries was CSS Nesting. Before finding it, I was writing many repetitive CSS selectors and JavaScript lines just to change the theme. After learning CSS Nesting, my CSS became much cleaner, my JavaScript became much shorter, and the entire project was much easier to maintain.
+            For example, my first approach looked something like this: 
+        </p>
+
+        <h3>Before (Many JavaScript lines)</h3>
+        <div> 
+            header.classList.toggle("dark");<br>
+            logo.classList.toggle("dark");<br>
+            nav.classList.toggle("dark");<br>
+            button.classList.toggle("dark");<br>
+            footer.classList.toggle("dark");
+        </div>
+        <p>
+            After reorganizing my CSS with nesting, I only needed to change one parent element:
+        </p>
+
+        <h3>After (Cleaner JavaScript)</h3>
+        <div>
+            demoCanvas.classList.toggle("dark");
+        </div>
+        <p>
+            Then CSS takes care of everything:
+        </p>
+        <div>
+            #demoCanvas.dark {<br> <br>
+                #demoHeader { background: #333; }<br>
+                a { color: white; }<br>
+                button:hover { color: gold; }<br> <br>
+            }
+        </div>
+        <p>
+            I think this was one of the coolest moments in my learning journey. 
+            Instead of making the code simply work, I learned how to make it cleaner, 
+            easier to read, and easier to maintain.
+        </p>
+
+        <button class="readHideBtn">Hide</button>
+    </section>
+    
+    
+</main>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

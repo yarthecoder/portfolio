@@ -1,0 +1,126 @@
+body {
+    box-sizing: border-box;
+    padding: 20px 20px;
+}
+
+main {
+    background-color: beige;
+    box-sizing: border-box;
+    width: 440Px;
+    padding: 20px;
+    text-align: justify;
+}
+
+
+
+div {
+    box-sizing: border-box;
+    background-color: lightgrey;
+    width: auto;
+    max-width: 400px;
+    height: auto;
+    max-height: 400px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0px;
+    padding: 20px 20px;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+div p {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid darkgrey;
+}
+button {
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+
+/* ------------------------------ */
+/* -- Demonstration section ----- */
+
+#demoLikeBtn {
+    margin-right: 15px;
+}
+
+#demoReaction {
+    padding: 10px 0px;
+    width: 100%;
+    border-top: 1px solid darkgrey;
+}
+
+#demoCommentInput {
+    width: 110px;
+}
+
+#demoCommentSection {
+    background-color: rgb(255, 255, 255);
+    margin-top: 10px;
+    width: 100%;
+    padding: 5px 0px;
+    height: 50px;
+    overflow: auto;
+    border: 1px solid darkgrey;
+    
+}   
+
+#demoCommentSubmitBtn {
+    color: rgb(61, 60, 60);
+    width: 1.3rem;
+}
+
+li {
+    list-style-type: "👨‍💻: ";
+    padding-bottom: 5px;
+    width: 85%;
+    margin-bottom: 10px;
+    overflow-wrap: break-word;
+    border-bottom: 1px solid darkgrey;
+}
+
+
+
+
+/* ----------------------- */
+/* -- like and comment section ----- */
+
+#likeBtn {
+    margin-right: 20px;
+}
+
+.reaction {
+    padding: 10px 0px;
+    width: auto;
+    max-width: 400px;
+    border-top: 1px solid darkgrey;
+    
+}
+
+#commentInput {
+    width: 120px;
+}
+
+#commentSubmitBtn {
+    color: rgb(61, 60, 60);
+    width: 1.3rem;
+}
+
+#commentSection {
+    margin-top: 5px;
+    padding: 10px 0px;
+    width: auto;
+    max-width: 400px;
+    height: auto;
+    max-height: 100px;
+    overflow: auto;
+    border: 1px solid darkgrey;
+    
+}   
+
