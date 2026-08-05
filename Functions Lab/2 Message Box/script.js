@@ -38,7 +38,7 @@ const buttonPlusPlus = document.querySelector('.buttonPlusPlus');
 const box = document.querySelector('.box');
 
 
-// -- Create elements -- //
+// -- Create Elements -- //
 function createCommentInput() {
     const commentInput = document.createElement('input');
     commentInput.classList.add('commentInput');
@@ -46,7 +46,7 @@ function createCommentInput() {
     return commentInput;
 }
 
-function createSubmitButton(commentInput) {
+function createSubmitButton(commentInput, commentCount) {
     const submitButton = document.createElement('button');
     submitButton.classList.add('submitButton');
 
@@ -56,7 +56,7 @@ function createSubmitButton(commentInput) {
     submitButton.appendChild(submitIcon);
 
     submitButton.addEventListener('click', () => {
-        submitComment(commentInput);
+        submitComment(commentInput, commentCount);
     });
 
     return submitButton;
@@ -91,6 +91,7 @@ function createCommentButton(commentArea, commentInputArea) {
 }
 
 
+
 // -- Behavior -- //
 function toggleComment(commentArea, commentInputArea) {
     commentArea.classList.toggle('show');
@@ -101,7 +102,6 @@ function focusCommentInput(commentInput) {
     commentInput.focus();
 }
 
-// unfinished function, needs to be completed
 function updateCommentCount(commentCount, count) {
     commentCount.textContent = parseInt(commentCount.textContent) + count;
 }
@@ -116,13 +116,15 @@ function textInputValue (commentInput) {
 }
 
 function submitComment(commentInput, commentCount) {
-    textInputValue(commentInput);
+    const text = textInputValue(commentInput);
+    if (!text) return;
+    updateCommentCount(commentCount, 1);
 }
 
 
 
 
-// -- Elements container builder -- //
+// -- Elements Container Builder -- //
 function createCommentArea() {
     const commentArea = document.createElement('div');
     commentArea.classList.add('commentArea');
@@ -130,23 +132,22 @@ function createCommentArea() {
     return commentArea;
 }
 
-function createCommentInputArea() {
+function createCommentInputArea(commentInput, submitButton) {
     const commentInputArea = document.createElement('div');
     commentInputArea.classList.add('commentInputArea');
 
-    const commentInput = createCommentInput();
     commentInputArea.appendChild(commentInput);
-    commentInputArea.appendChild(createSubmitButton(commentInput));
+    commentInputArea.appendChild(submitButton);
 
-   return commentInputArea;
+    return commentInputArea;
 }
 
-function createButtonArea(commentArea, commentInputArea) {
+function createButtonArea(commentCount, commentButton) {
     const buttonArea = document.createElement("div");
     buttonArea.classList.add('buttonArea');
 
-    buttonArea.appendChild(createCommentCount());
-    buttonArea.appendChild(createCommentButton(commentArea, commentInputArea));
+    buttonArea.appendChild(commentCount);
+    buttonArea.appendChild(commentButton);
 
     return buttonArea;
 }
@@ -158,12 +159,20 @@ function createButtonCard() {
     buttonCard.classList.add("buttonCard");
     
     const commentArea = createCommentArea();
-    const inputArea = createCommentInputArea();
-    const buttonArea = createButtonArea(commentArea, inputArea);
+
+    const commentInput = createCommentInput();
+    const commentCount = createCommentCount();
+    const submitButton = createSubmitButton(commentInput, commentCount);
+
+    const commentInputArea = createCommentInputArea(commentInput, submitButton);
+    
+    const commentButton = createCommentButton(commentArea, commentInputArea);
+
+    const buttonArea = createButtonArea(commentCount, commentButton);
 
     buttonCard.appendChild(buttonArea);
     buttonCard.appendChild(commentArea);
-    buttonCard.appendChild(inputArea);
+    buttonCard.appendChild(commentInputArea);
     
     box.appendChild(buttonCard);
 
