@@ -1,6 +1,14 @@
-body {
+* {
     box-sizing: border-box;
-    padding:20px;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: white;
+    line-height: 1.5rem;
+    display: flex;
+    justify-content: center;
 }
 
 main {

@@ -1,6 +1,13 @@
-body {
+* {
     box-sizing: border-box;
-    padding: 20px 20px;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: white;
+    display: flex;
+    justify-content: center;
 }
 
 main {

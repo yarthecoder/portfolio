@@ -1,0 +1,366 @@
+*{
+    box-sizing: border-box;
+}
+
+:root {
+    --main-width: 440px;
+    --canvasBody-height: 200;
+    
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: white;
+    line-height: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+#heading {
+    display: flex;
+    justify-content: space-between;
+
+    #expandBtn {
+        background-color: transparent;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+}
+
+/* -- Expand section -- */
+.expand {
+    --main-width: auto;
+    --canvasBody-height: auto;
+}
+
+main {
+    background-color: beige;
+    width: min(100%, var(--main-width));
+    padding: 20px;
+
+    p {
+        text-align: justify;
+    }
+}
+
+
+
+
+/* ------------------------- */
+/* ---- Commit Section ----- */
+.commitSection {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.readHideBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0px;
+    
+}
+
+#readMore {
+    display: none;
+    border-top: 1px dashed black;
+    border-bottom: 1px dashed black;
+
+    div {
+        margin: 0px 50px;
+        padding: 10px;
+        background-color: rgb(176, 176, 175);
+        color: #1877F2;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+    .readHideBtn {
+        display: block;
+        margin-left: auto;
+        margin-bottom: 10px;
+    }
+}
+#readMore.show {
+    display: block;
+}
+
+
+
+
+/* ------------------------------- */
+/* ---- Demostration Section ----- */
+
+#demoCanvasBody {
+    background-color: lightgrey;
+    height: var(--canvasBody-height);
+    margin: 20px 0px;
+    padding: 10px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.commentSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.buttonArea {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 0.5rem;
+
+    button {
+        background-color: transparent;
+        color: grey;
+        border: none;
+        margin-right: 10px;
+        font-size: 1rem;
+    }
+    .commentButton {
+        color: green;
+        font-size: 1.5rem;
+        cursor: pointer;
+
+        &:hover {
+            color: limegreen;
+        }
+    }
+    span {
+        margin-left: 10px;
+    }
+}
+
+.commentCardContainer {
+    background-color: white;
+    width: 100%;
+    min-height: 200px;
+    max-height: 600px;
+    border-radius: 0.5rem;
+    margin: 0.2rem 0px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+   
+    /* -- commemt card -- */
+    .comment-card {
+        display: flex;
+        margin: 10px;
+        gap: 5px;
+
+        .avatar {
+            background-color: rgb(240, 240, 240);
+            color: rgb(150, 150, 150);
+            font-weight: bold;
+
+            width: 35px;
+            height: 35px;
+            border-radius: 30%;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            flex-shrink: 0;
+        }
+
+        .comment-structure {
+            /* background-color: rgb(240, 240, 240); */
+            border-top-right-radius: 1rem;
+            flex: 1;
+                
+            .comment-header span{
+                margin-right: 5px;                           
+            }
+                
+            .comment-text {
+                margin: 5px;
+                word-break: break-word;
+            }
+
+            button {
+                cursor: pointer;
+                margin-right: 5px;
+                background-color: transparent;
+                border: none;
+
+                &:hover {
+                    scale: 1.1;
+                }
+            }
+
+            .like-btn.active, .dislike-btn.active {
+                color: red;
+            }
+
+            .reply-area {
+                display: none;
+                flex-direction: column;
+                background-color: rgb(255, 255, 255);
+                margin: 0px;               
+            }
+
+            .reply-area.show {
+                display: flex;
+            }
+            
+            /* Create Comment Tree Link */
+            .reply-area.has-replies {
+                position: relative;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0px;
+                    bottom: 29px;
+                    width: 2px;
+                    transform: translate(-20px, -40px);
+                    background: #ccc;
+                }
+
+                > .comment-card {
+                    position: relative;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        width: 16px;
+                        height: 2px;
+                        transform: translate(-20px, 16px);
+                        background: #ccc;
+                    }
+                }
+            }
+            /* -- -- -- -- -- -- **/
+        }
+    }
+    
+    .comment-card.reply {
+        margin: 0px;
+       
+        .avatar {
+            margin-top: 5px;
+            width: 25px;
+            height: 25px;
+        }
+        
+        .comment-structure {
+            margin-top: 5px;
+        }
+    }
+}
+
+
+
+.commentInputArea {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border-radius: 0.5rem;
+
+    button.cancelButton {
+        background-color: transparent;
+        color: grey;
+        margin-right: 10px;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+        position: relative;
+
+        .tooltip {
+            background-color: rgb(230, 230, 230);
+            color: #000;
+            font-size: 12px;
+            position: absolute;
+            white-space: nowrap;
+            pointer-events: none;
+            bottom: 30px;
+            left: 0%;
+            transform: translateX(-5%);
+            opacity: 0;
+            padding: 2px 5px;
+            border-radius: 20px;
+            transition: opacity 0.2s;
+        }
+
+        &:hover {
+            color: #1877F2;
+            scale: 1.2;
+            .tooltip {
+                opacity: 1; 
+            }
+        }
+    }
+
+
+    input.commentInput {
+        background-color: rgb(240, 240, 240);
+        color: black;
+        width: 80%;
+        padding: 5px 15px;
+        border-radius: 10px;
+        border: none;
+        font-size: 1rem;
+    }
+
+    button.submitButton {
+        background-color: transparent;
+        color: grey;
+        margin-left: 10px;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+        position: relative;
+
+        .tooltip {
+            background-color: rgb(230, 230, 230);
+            color: #000;
+            font-size: 12px;
+            position: absolute;
+            white-space: nowrap;
+            pointer-events: none;
+            right: 0%;
+            bottom: calc(100% + 8px);
+            transform: translateX(8%);
+            opacity: 0;
+            padding: 2px 5px;
+            border-radius: 20px;
+            transition: opacity 0.2s;
+        }
+
+        &:hover {
+            color: #1877F2;
+            scale: 1.2;
+            .tooltip {
+                opacity: 1; 
+            }
+        }
+    }
+}
+
+.commentBox {
+    display: none;
+    width: 100%;
+}
+.commentBox.show {
+    display: block;
+}

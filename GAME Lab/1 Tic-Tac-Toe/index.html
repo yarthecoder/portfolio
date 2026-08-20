@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <title>Tic-Tac-Toe</title>
+  </head>
+  
+  <body>
+    <main>
+      <section id="heading">
+      <h2>1 Tic-Tac-Toe</h2>
+      <button id="expandBtn">
+        <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+      </button>
+      </section>
+      <p>
+        This is my second game project and my first game built with the DOM.
+        For now, as a Version 1, I focused on getting the basic game interaction working: 
+        selecting cells, placing O and X, switching between players, 
+        and updating the visual player indicator.
+      </p>
+
+
+      <!---------------------------------->
+      <!----- Demostration Section ------->
+      <section id="demoCanvasBody">
+        <section class="game">        
+          <section id="gameBoard">
+            <div class='cell' id="cell1"></div>
+            <div class='cell' id="cell2"></div>
+            <div class='cell' id="cell3"></div>
+            <div class='cell' id="cell4"></div>
+            <div class='cell' id="cell5"></div>
+            <div class='cell' id="cell6"></div>
+            <div class='cell' id="cell7"></div>
+            <div class='cell' id="cell8"></div>
+            <div class='cell' id="cell9"></div>
+          </section>
+          
+          <section class="indicator">
+            <span class="player" id="player1">O</span>
+            <span class="gameResult"></span>
+            <span class="player" id="player2">X</span>
+          </section>              
+        </section>
+      </section>
+
+
+      <!---------------------------->
+      <!----- Commit Section ------->
+      <section class="commitSection">
+        <span>
+          Source:
+          <a href="index.html" target="_blank">HTML</a>,
+          <a href="style.css" target="_blank">CSS</a>,
+          <a href="script.js" target="_blank">JS</a>.
+        </span>
+        <span>
+          Version 1
+        </span>
+      </section>
+
+      <section class="commitSection"> 
+        <span id="Commit">Project Commit: 13 August 2026</span>
+        <span> 
+          <button class="readHideBtn">Read More ▼</button>
+        </span>
+      </section>
+      
+
+      <section id="readMore">
+        <h2>What I learned from this Project</h2>
+
+        <p>
+          Every time when I create something, I focus on scalable and cleaner code.
+          <br><br>
+          In this game, I built it with separate helper functions such as "updateUI()"
+          to update the UI for each state, and "checkWinner()" and "checkDraw()" for the game logic.
+          I also got a new way of thinking about the logic with "winningPatterns". 
+          <br><br>
+          That's why my click listener is so clean and pretty. I don't need to put too much effort 
+          into my thinking every time when I review the game.
+          <br><br>
+          This is what I like about separating functions, but if you do too much separation, 
+          the code can become messy too. So, be careful.<br><br>
+          Be right back with V2 with some nice logic.
+        </p>
+
+        <button class="readHideBtn">Hide ▲</button>
+      </section>
+
+    </main>
+    <script src="script.js"></script>
+  </body>
+
+</html>

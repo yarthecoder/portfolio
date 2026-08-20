@@ -62,6 +62,8 @@ function createSubmitButton(commentInput, commentCount) {
     return submitButton;
 }
 
+
+
 function createCommentCount() {
     const commentCount = document.createElement('span');
     commentCount.classList.add('commentCount');
@@ -120,7 +122,6 @@ function submitComment(commentInput, commentCount) {
     if (!text) return;
     updateCommentCount(commentCount, 1);
 }
-
 
 
 

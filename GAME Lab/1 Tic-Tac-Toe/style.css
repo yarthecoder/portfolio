@@ -1,0 +1,193 @@
+*{
+    box-sizing: border-box;
+}
+
+:root {
+    --main-width: 440px;
+    --canvasBody-height: 440;
+    --game-board-color: rgb(0, 255, 0);
+    --text-color: rgb(0, 255, 0);
+    --player-color: grey;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: white;
+    line-height: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+#heading {
+    display: flex;
+    justify-content: space-between;
+
+    #expandBtn {
+        background-color: transparent;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+}
+
+/* -- Expand section -- */
+.expand {
+    --main-width: auto;
+    --canvasBody-height: auto;
+}
+
+main {
+    background-color: beige;
+    width: min(100%, var(--main-width));
+    padding: 20px;
+
+    p {
+        text-align: justify;
+    }
+}
+
+
+
+
+
+/* ------------------------- */
+/* ---- Commit Section ----- */
+.commitSection {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.readHideBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0px;
+    
+}
+
+#readMore {
+    display: none;
+    border-top: 1px dashed black;
+    border-bottom: 1px dashed black;
+
+    div {
+        margin: 0px 50px;
+        padding: 10px;
+        background-color: rgb(176, 176, 175);
+        color: #1877F2;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+    .readHideBtn {
+        display: block;
+        margin-left: auto;
+        margin-bottom: 10px;
+    }
+}
+#readMore.show {
+    display: block;
+}
+
+
+
+/* ------------------------------- */
+/* ---- Demostration Section ----- */
+
+#demoCanvasBody {
+    background-color: lightgrey;
+    margin: 20px 0px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;    
+}
+
+.game {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#gameBoard {
+    background-color: var(--game-board-color);
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+    gap: 0.2rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+
+    .cell {
+        background-color: rgb(0, 0, 0);
+        border-radius: 0.5rem;
+        width: 100px;
+        height: 100px;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 80px;
+        font-weight: bold;
+        color: var(--text-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    .cell.o {
+        --text-color: rgb(0, 255, 0);
+    }
+    .cell.x {
+        --text-color: rgb(255, 0, 0);
+    }
+}
+
+#gameBoard.o {
+    transition: ease 0.2s;
+    --game-board-color: rgb(0, 255, 0);
+}
+
+#gameBoard.x {
+    transition: 0.2s;
+    --game-board-color: rgb(255, 0, 0);
+}
+
+
+.indicator {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+
+    .player {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 50px;
+        font-weight: bold;
+        color: var(--player-color)
+    }
+    #player1.current {
+        transition: ease 0.2s;
+        color: rgb(0, 255, 0);
+    }
+    #player2.current {
+        transition: 0.2s;
+        color: rgb(255, 0, 0);
+    }
+
+    .gameResult {
+        width: 200px;
+        margin: 0px 20px;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .gameResult.o {
+        color: rgb(0, 255, 0);
+    }
+    .gameResult.x {
+        color: rgb(255, 0, 0);
+    }
+}
