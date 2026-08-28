@@ -32,8 +32,8 @@ expandBtn.addEventListener('click', () => {
 })
 
 
-// -------------------------- //
-// -- Theme Toggle Section -- //
+// ----------------------------------------- //
+// -- Demostration / Theme Toggle Section -- //
 
 const themes = ['root', 'theme-dark', 'theme-ocean', 'theme-coffee', 'theme-homebrew'];
 let currentThemeIndex = 0;

@@ -4,7 +4,8 @@
 
 :root {
     --main-width: 440px;
-    --canvasBody-height: 200;
+    --canvasBody-height: auto;
+    --tile-size: 60px;
 }
 
 body {
@@ -30,7 +31,7 @@ body {
 
 /* -- Expand section -- */
 .expand {
-    --main-width: auto;
+    --main-width: 100%;
     --canvasBody-height: auto;
 }
 
@@ -56,13 +57,6 @@ main {
     align-items: center;
     overflow-y: auto;
 }
-
-
-/* ------------------------------- */
-/* ---- Demostration Section ----- */
-
-
-
 
 
 /* ------------------------- */
@@ -104,4 +98,80 @@ main {
 }
 #readMore.show {
     display: block;
+}
+
+
+
+
+/* ------------------------------- */
+/* ---- Demostration Section ----- */
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+#gameScore {
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#gameBoard {
+    display: grid;
+    gap: 2px;
+    background-color: rgb(251, 251, 251);
+    padding: 2px;
+    margin: 10px 0px;
+    border: 5px solid rgb(25, 150, 200);
+    border-radius: 5px;
+
+    .tile {
+        background-color: rgb(25, 150, 200);
+        cursor: pointer;
+        border: none;
+        text-align: center;
+        border-radius: calc(var(--tile-size) * 0.07);
+        width: var(--tile-size);
+        height: var(--tile-size);
+        font-size: 0px;
+    }
+    .tile.revealed {
+        background-color: rgb(200, 200, 200);
+        font-size: 44px;
+        transition: ease-in-out 0.2s;
+    }
+    .tile.matched {
+        background-color: rgb(0, 200, 0);
+        transition: ease 0.5s;
+    }
+}
+
+#gameResult {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 30px;
+    font-size: 22px;
+    font-weight: bold;
+    width: 100%;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#gameResult.show {
+    display: flex;
 }

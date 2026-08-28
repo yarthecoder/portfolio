@@ -5,8 +5,8 @@
 :root {
     --main-width: 440px;
     --canvasBody-height: 440;
-    --game-board-color: rgb(0, 255, 0);
-    --text-color: rgb(0, 255, 0);
+    --game-board-color: limegreen;
+    --text-color: limegreen;
     --player-color: grey;
 }
 
@@ -138,21 +138,21 @@ main {
         cursor: pointer;
     }
     .cell.o {
-        --text-color: rgb(0, 255, 0);
+        --text-color: limegreen;
     }
     .cell.x {
-        --text-color: rgb(255, 0, 0);
+        --text-color: red;
     }
 }
 
 #gameBoard.o {
     transition: ease 0.2s;
-    --game-board-color: rgb(0, 255, 0);
+    --game-board-color: limegreen;
 }
 
 #gameBoard.x {
     transition: 0.2s;
-    --game-board-color: rgb(255, 0, 0);
+    --game-board-color: red;
 }
 
 
@@ -161,6 +161,7 @@ main {
     justify-content: space-around;
     align-items: center;
     margin-top: 20px;
+   
 
     .player {
         font-family: "Space Grotesk", sans-serif;
@@ -170,24 +171,24 @@ main {
     }
     #player1.current {
         transition: ease 0.2s;
-        color: rgb(0, 255, 0);
+        color: limegreen;
     }
     #player2.current {
         transition: 0.2s;
-        color: rgb(255, 0, 0);
+        color: red;
     }
 
     .gameResult {
         width: 200px;
         margin: 0px 20px;
-        font-size: 20px;
+        font-size: 26px;
         font-weight: bold;
         text-align: center;
     }
     .gameResult.o {
-        color: rgb(0, 255, 0);
+        color:limegreen;
     }
     .gameResult.x {
-        color: rgb(255, 0, 0);
+        color: red;
     }
 }
