@@ -31,7 +31,7 @@ body {
 
 /* -- Expand section -- */
 .expand {
-    --main-width: 100%;
+    --main-width: auto;
     --canvasBody-height: auto;
 }
 
