@@ -42,8 +42,9 @@ const gameResult = document.querySelector('#gameResult');
 let numberScore = 0;
 let numberTries = 0;
 let gameOver = false;
+let checkingPair = false;
 
-let row = 5;
+let row = 6;
 let column = 6;
 
 const totalTiles = row * column;
@@ -131,7 +132,7 @@ function setTileValue(tile, imageValue) {
 const selectedTiles = [];
 
 function selectTile(tile) {
-    if (gameOver) {
+    if (gameOver || checkingPair) {
         return;
     }
 
@@ -144,6 +145,8 @@ function selectTile(tile) {
     if (selectedTiles.length < 2) {
         return;
     }
+    checkingPair = true;
+
     numberTries++;
     tries.textContent = "Tries: " + numberTries;
 
@@ -158,6 +161,9 @@ function selectTile(tile) {
         const scorePercent = Math.round((numberScore / totalPairs) * 100);
         score.textContent = `Score: ${scorePercent}%`;
 
+        selectedTiles.length = 0;
+        checkingPair = false;
+
         if (numberScore === totalPairs) {
             endGame();
         }
@@ -166,10 +172,10 @@ function selectTile(tile) {
         setTimeout(() => {
             firstTile.classList.remove('revealed');
             secondTile.classList.remove('revealed');
+            selectedTiles.length = 0;
+            checkingPair = false;
         }, 600);       
     }
-
-    selectedTiles.length = 0;
 }
 
 function resetGame() {
@@ -182,6 +188,7 @@ function resetGame() {
 
     selectedTiles.length = 0;
     gameOver = false;
+    checkingPair = false;
     gameBoard.innerHTML = '';
 
     setTilesPair()
@@ -216,6 +223,8 @@ function revealTile(tile) {
 }
 
 function handleTileClick(tile) {
+    if (gameOver || checkingPair) return;
+
     selectTile(tile);
     revealTile(tile);
 }

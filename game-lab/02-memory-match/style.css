@@ -3,18 +3,21 @@
 }
 
 :root {
-    --main-width: 440px;
-    --canvasBody-height: auto;
+    --max-width: 400px;
     --tile-size: 60px;
 }
 
 body {
     margin: 0;
-    padding: 20px;
     background: white;
     line-height: 1.5rem;
     display: flex;
     justify-content: center;
+}
+
+.container {
+    width: min(95vw, var(--max-width));
+    margin-inline: auto;
 }
 
 #heading {
@@ -31,13 +34,12 @@ body {
 
 /* -- Expand section -- */
 .expand {
-    --main-width: auto;
-    --canvasBody-height: auto;
+    --max-width: 900px;
 }
 
 main {
     background-color: beige;
-    width: min(100%, var(--main-width));
+    
     padding: 20px;
 
     p {
@@ -47,7 +49,6 @@ main {
 
 #demoCanvasBody {
     background-color: lightgrey;
-    height: var(--canvasBody-height);
     margin: 20px 0px;
     padding: 20px;
     
@@ -111,7 +112,9 @@ main {
     justify-content: center;
     align-items: center;
     width: 100%;
+    max-width: 500px;
     position: relative;
+    gap: 20px;
 }
 
 #gameScore {
@@ -125,28 +128,32 @@ main {
 }
 
 #gameBoard {
+    background-color: rgb(251, 251, 251);
     display: grid;
     gap: 2px;
-    background-color: rgb(251, 251, 251);
     padding: 2px;
-    margin: 10px 0px;
     border: 5px solid rgb(25, 150, 200);
     border-radius: 5px;
+    width: 100%;
 
     .tile {
         background-color: rgb(25, 150, 200);
         cursor: pointer;
-        border: none;
-        text-align: center;
+        border: 0.5px solid rgba(0, 0, 0, 0.5);
         border-radius: calc(var(--tile-size) * 0.07);
-        width: var(--tile-size);
-        height: var(--tile-size);
-        font-size: 0px;
+        width: 100%;
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0;
+        line-height: 1;
+        overflow: hidden;
     }
     .tile.revealed {
         background-color: rgb(200, 200, 200);
-        font-size: 44px;
-        transition: ease-in-out 0.2s;
+        font-size: clamp(1rem, 35cqw, 3rem);
+        transition: ease-in-out 0.17s;
     }
     .tile.matched {
         background-color: rgb(0, 200, 0);
