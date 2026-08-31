@@ -64,7 +64,7 @@ const images = [
     { value: 'butterfly',  textContent: '🦋' },
     { value: 'ladybird',  textContent: '🐞' },
     { value: 'tropical-fish',  textContent: '🐠' },
-    { value: 'lizard',  textContent: '🦎' },
+    { value: 'rabbit',  textContent: '🐇' },
     { value: 'lobster',  textContent: '🦞' },
 
     { value: 'mammoth',  textContent: '🦣' },
@@ -83,7 +83,7 @@ const images = [
     { value: 'peacock',  textContent: '🦚' },
     { value: 'rooster',  textContent: '🐓' },
     { value: 'bison',  textContent: '🦬' },
-    { value: 'rabbit',  textContent: '🐇' },
+    { value: 'lizard',  textContent: '🦎' },
     { value: 'dragon',  textContent: '🐉' },
     { value: 'gorilla',  textContent: '🦍' },
     { value: 'dolphin',  textContent: '🐬' },
