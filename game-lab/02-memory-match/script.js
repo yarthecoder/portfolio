@@ -50,26 +50,27 @@ let column = 6;
 const totalTiles = row * column;
 const totalPairs = totalTiles / 2;
 
-gameBoard.style.gridTemplateRows = `repeat(${row}, 1fr)`;
-gameBoard.style.gridTemplateColumns = `repeat(${column}, 1fr)`;
+gameBoard.style.gridTemplateRows = `repeat(${row}, minmax(0, 1fr))`;
+gameBoard.style.gridTemplateColumns = `repeat(${column},  minmax(0, 1fr))`;
+//gameBoard.style.aspectRatio = `${column} / ${row}`;
 
 // -- Images Source --
 const images = [
-    { value: 'dog',  textContent: '🐶' },
-    { value: 'cow',  textContent: '🐮' },
-    { value: 'crocodile',  textContent: '🐊' },
-    { value: 'crow',  textContent: '🐦‍⬛' },
-    { value: 'zebra',  textContent: '🦓' },
+    { value: 'dog',  textContent: '🐕' },
+    { value: 'cow',  textContent: '🐄' },
+    { value: 'bee',  textContent: '🐝' },
+    { value: 'duck',  textContent: '🦆' },
+    { value: 'hairy-creature',  textContent: '🫈' },
     { value: 'butterfly',  textContent: '🦋' },
     { value: 'ladybird',  textContent: '🐞' },
-    { value: 'snail',  textContent: '🐌' },
+    { value: 'tropical-fish',  textContent: '🐠' },
     { value: 'lizard',  textContent: '🦎' },
-    { value: 'octopus',  textContent: '🐙' },
+    { value: 'lobster',  textContent: '🦞' },
 
-    { value: 'seal',  textContent: '🦭' },
-    { value: 'gorilla',  textContent: '🦍' },
+    { value: 'mammoth',  textContent: '🦣' },
+    { value: 'orangutan',  textContent: '🦧' },
     { value: 'giraffe',  textContent: '🦒' },
-    { value: 'monkey',  textContent: '🐒' },
+    { value: 'monkey',  textContent: '🦥' },
     { value: 'owl',  textContent: '🦉' },
     { value: 'spider',  textContent: '🕷️' },
     { value: 'dinosaur',  textContent: '🦕' },
@@ -84,7 +85,7 @@ const images = [
     { value: 'bison',  textContent: '🦬' },
     { value: 'rabbit',  textContent: '🐇' },
     { value: 'dragon',  textContent: '🐉' },
-    { value: 'orangutan',  textContent: '🦧' },
+    { value: 'gorilla',  textContent: '🦍' },
     { value: 'dolphin',  textContent: '🐬' },
     { value: 'leopard',  textContent: '🐆' }
 ];
