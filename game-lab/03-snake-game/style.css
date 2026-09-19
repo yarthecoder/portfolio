@@ -1,0 +1,458 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --max-width: 500px;
+    --main-width: auto;
+}
+
+body {
+    margin: 0;
+    background: white;
+    line-height: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    background-color: beige;
+    width: var(--main-width);
+    p {
+        text-align: justify;
+    }
+}
+
+.container {
+    width: min(95vw, var(--max-width));
+    margin-inline: auto;
+}
+
+header {
+    padding: 2rem;
+}
+
+#heading {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+
+    #expandBtn {
+        background-color: transparent;
+        border: none;
+        font-size: 1.3rem;
+        cursor: pointer;
+        
+        &:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+    }
+    
+    
+}
+
+/* -- Expand section -- */
+.expand {
+    --max-width: 1200px;
+    --main-width: 100%;
+    --canvasBody-height: auto;
+}
+
+
+
+/* ------------------------- */
+/* ---- Commit Section ----- */
+.commitSection {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+.readHideBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0px;
+}
+
+#readMore {
+    display: none;
+    border-top: 1px dashed black;
+    border-bottom: 1px dashed black;
+    padding: 2rem;
+    margin-bottom: 2rem;
+
+    div {
+        margin: 0px 50px;
+        padding: 10px;
+        background-color: rgb(176, 176, 175);
+        color: #1877F2;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+    .readHideBtn {
+        display: block;
+        margin-left: auto;
+        margin-bottom: 10px;
+    }
+}
+#readMore.show {
+    display: block;
+}
+
+
+/* ------------------------------- */
+/* ---- Demostration Section ----- */
+
+#demoCanvas {
+    background-color: rgb(220, 220, 220);
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+}
+
+#game-status {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    background-color: darkgreen;
+    color: white;
+    padding: 10px;
+    text-transform: uppercase;
+    pointer-events: none;
+
+    .boost.show{
+        color: yellow;
+    }
+
+    .setting-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        
+        button {
+            color: black;
+            border-radius: 5px;
+            width: 22px;
+            cursor: pointer;
+            font-size: 14px;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.4);
+                color: red;
+            }
+        }
+    }  
+}
+
+#game-status.show {
+    display: flex;
+    pointer-events: auto;
+}
+
+#game-status.inactive {
+    pointer-events: none;
+
+    button {
+        background-color: rgba(255, 255, 255, 0.4);
+        color: grey;
+    }
+}
+
+
+
+#panel {
+    background-color: rgba(45, 45, 45, 0.2);
+    backdrop-filter: blur(0.5px);
+    -webkit-backdrop-filter: blur(0.5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    top: 0;
+    gap: 60px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.6s ease;
+
+    .panel-text{
+        display: none;
+        background-color: rgb(20, 20, 20);
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .navigation-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 100px;
+
+        button {
+            display: none;
+            cursor: pointer;
+            font-size: 25px;
+            width: 50px;
+            height: 50px;
+            border-radius: 20px;
+            box-shadow: 2px 2px 5px red;
+            color: red;
+            pointer-events: none;
+            position: relative;
+            
+            
+
+            .tooltip {
+                color: white;
+                font-size: 18px;
+                position: absolute;
+                white-space: nowrap;
+                top: 55px;
+                left: 50%;
+                transform: translateX(-50%);
+                pointer-events: none;
+            }
+
+            &:hover {
+                transform: scale(1.1);
+                box-shadow: 2px 2px 5px green;
+                color: green;
+            }
+
+            &:active {
+                transform: scale(1);
+            }
+        }
+    }
+
+    .confirm-panel-buttons {
+        display: none;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        gap: 100px;
+
+        button {
+            cursor: pointer;
+            width: 90px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            border-radius: 10px;
+            padding: 3px;
+            text-transform: uppercase;
+
+            &:hover {
+                transform: scale(1.1);
+                color: black;
+            }
+
+            &:active {
+                transform: scale(1);
+            }
+        }
+
+        .cancel-button {
+            background-color: red;
+            box-shadow: -2px 2px 2px white;
+        }
+
+        .confirm-button {
+            background-color: green;
+            box-shadow: 2px 2px 2px white;
+        }
+    }
+}
+
+#panel.home {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+
+    .panel-text {
+        display: block;
+    }
+
+    .infoButton {
+        display: block;
+        pointer-events: auto;
+    }
+
+    .startButton {
+        display: block;
+        pointer-events: auto;
+    } 
+}
+
+#panel.pause {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+
+    .playButton {
+        display: block;
+        pointer-events: auto;
+    }
+}
+
+#panel.game-over {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+
+    .panel-text {
+        display: block;
+    }
+
+    .restartButton {
+        display: block;
+        pointer-events: auto;
+    }
+    .homeButton {
+        display: block;
+        pointer-events: auto;
+    }    
+}
+
+#panel.confirmation {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+
+    .panel-text {
+        display: block;
+    }
+
+    .navigation-buttons {
+        display: none;
+    }
+
+    .confirm-panel-buttons {
+        display: flex;
+    }
+}
+
+
+
+#game-board {
+    background-color: #202d28;
+    display: grid;
+    width: 100%;
+    position: relative;
+}
+
+.cell {
+    background-color: #202d28;
+    border: 0.5px solid rgba(255, 255, 255, 0.12);
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell.food {
+    background-color: yellow;
+    border: 1px solid #202d28;
+    font-size: 15px;
+}
+
+.cell.snake {
+    background-color: rgb(75, 190, 125);
+    border: 1px solid #202d28;
+}
+
+.cell.snake-tail {
+    border: 1px solid #202d28;
+    
+}
+
+.cell.flash {
+    background-color: rgb(220, 220, 220);
+    border: 1px solid #202d28;
+}
+
+.cell.snake-head {
+    background-color: rgb(235, 79, 79);
+}
+
+
+#game-control-box {
+    background-color: darkgreen;
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    pointer-events: none;
+
+    button {
+        cursor: pointer;
+        width: 40px;
+        font-size: 22px;
+        background-color: silver;
+        color: black;
+        border-radius: 10px;
+        margin: 5px;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            color: red;
+        }
+    }
+}
+
+#game-control-box.show {
+    display: flex;
+    pointer-events: auto;
+}
+
+#game-control-box.inactive {
+    pointer-events: none;
+
+    button {
+        background-color: rgba(255, 255, 255, 0.4);
+        color: grey;
+    }
+}
+
+/*
+@media screen {
+    #game-control-buttons-box {
+        position: absolute;
+        bottom: 240px;
+        
+        button { 
+            background-color: transparent;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.4);
+                color: red;
+            }
+        }
+    }
+}
+    */

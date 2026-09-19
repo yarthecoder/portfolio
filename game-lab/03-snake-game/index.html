@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <title>snake game</title>
+  </head>
+  
+  <body>
+    <main>
+      <div class="container">
+
+      <header>
+        <section id="heading">
+          <h2>3. Snake Game</h2>
+          <button id="expandBtn">
+            <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+            
+          </button>
+        </section>
+        
+        <p>
+          Test, beta version.
+        </p>
+      </header>
+      
+
+      <!----- Demostration Section ------->
+      <section id="demoCanvas">
+
+        <div class="game">
+
+          <header id="game-status">
+            <section id="left-side">
+              <div class="upper-box">
+                <span class="life">Life: ❤️❤️❤️</span>
+              </div>
+              <div class="lower-box">
+                <span class="score">Score: 0</span>
+              </div>
+            </section>
+
+            <section id="right-side">
+              <div class="upper-box">
+                <span class="speed">Speed: 30%</span> 
+                <span class="boost"><i class="fa-solid fa-bolt"></i></span>
+              </div>
+              <div class="lower-box">
+                <span class="setting-box">
+                  <button class="restartButton status-restart" aria-label="Restart game" title="Restart game"><i class="fa-solid fa-rotate-left"></i></button>
+                  <button class="pauseButton" aria-label="Pause game" title="Pause game">
+                    <i class="fa-solid fa-pause"></i>
+                  </button>                 
+                  <button class="homeButton status-home" aria-label="Go home" title="Go home"><i class="fa-solid fa-home"></i></button>
+                </span>
+              </div>
+            </section>
+          </header>
+
+          <section id="game-board">
+    
+            <div id="panel">
+
+              <p class="panel-text">Touch start button to play!!!</p>
+        
+              <section class="navigation-buttons">
+
+                <button class="settingButton">
+                  <i class="fa-solid fa-gear"></i>
+                  <span class="tooltip">Setting</span> 
+                </button>
+                <button class="infoButton">
+                  <i class="fa-solid fa-info"></i>
+                  <span class="tooltip">Game Info</span>
+                </button> 
+                <button class="startButton">
+                  <i class="fa-solid fa-play"></i>
+                  <span class="tooltip">Start</span> 
+                </button>
+                
+                <button class="playButton">
+                  <i class="fa-solid fa-play"></i>
+                  <span class="tooltip">Play</span> 
+                </button>
+                           
+                <button class="homeButton panel-home">
+                  <i class="fa-solid fa-home"></i>
+                  <span class="tooltip">Home</span> 
+                </button>
+                <button class="restartButton panel-restart">
+                  <i class="fa-solid fa-rotate-left"></i>
+                  <span class="tooltip">Restart</span> 
+                </button>
+                
+              </section>
+
+              <section class="confirm-panel-buttons">
+                <button class="cancel-button">Cancel</button>
+                <button class="confirm-button">Confirm</button>
+              </section>
+
+            </div>
+          </section>
+
+          <footer id="game-control-box">
+            <div class="left-side-box">
+              <button class="control-button up-button" data-key="arrowup">
+                <i class="fa-solid fa-caret-up"></i>
+              </button>
+              <button class="control-button down-button" data-key="arrowdown">
+                <i class="fa-solid fa-caret-down"></i>
+              </button>
+            </div>
+            <div>
+              <button class="boost-button">
+                <i class="fa-solid fa-bolt"></i>
+              </button>
+            </div>
+            <div class=" right-side-box">
+              <button class="control-button left-button" data-key="arrowleft">
+                <i class="fa-solid fa-caret-left"></i>
+              </button>
+              <button class="control-button right-button" data-key="arrowright">
+                <i class="fa-solid fa-caret-right"></i>
+              </button>
+            </div>
+          </footer>
+
+        </div>
+
+      </section>
+
+      <footer class="commitSection"> 
+        <span id="Commit">Project Commit: Date</span>
+        <span> 
+          <button class="readHideBtn">Read More ▼</button>
+        </span>
+      </footer>
+      
+      <!----- Read More Section -------> 
+      <section id="readMore">
+        <h2>What I learned from this Project</h2>
+
+        <p>
+          
+        </p>
+
+        <button class="readHideBtn">Hide ▲</button>
+      </section>
+
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+
+</html>
