@@ -120,6 +120,9 @@ header {
 .game {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:  min(600px, 100%);
 }
 
 #game-status {
@@ -128,7 +131,8 @@ header {
     align-items: center;
     background-color: darkgreen;
     color: white;
-    padding: 10px;
+    width: 100%;
+    padding: 10px 20px;
     text-transform: uppercase;
     pointer-events: none;
 
@@ -363,7 +367,6 @@ header {
 }
 
 
-
 #game-board {
     background-color: #202d28;
     display: grid;
@@ -374,8 +377,8 @@ header {
 .cell {
     background-color: #202d28;
     border: 0.5px solid rgba(255, 255, 255, 0.12);
-    width: 20px;
-    height: 20px;
+    width: 100%;
+    aspect-ratio: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -413,6 +416,7 @@ header {
     align-items: center;
     padding: 5px;
     pointer-events: none;
+    width: 100%;
 
     .upper-box{
         width: 100%;
@@ -435,14 +439,9 @@ header {
         margin: 0 5px;
 
         &:hover {
-            background-color: rgba(255, 255, 255, 0.4);
-            color: red;
-        }
-
-        &:active {
-            background-color: silver;
-            color: black;
-        }
+        background-color: rgba(255, 255, 255, 0.4);
+        color: red;
+        }    
     }
 
     .boost-button {
@@ -467,20 +466,10 @@ header {
 }
 
 
-/*
-@media screen {
-    #game-control-buttons-box {
-        position: absolute;
-        bottom: 240px;
-        
-        button { 
-            background-color: transparent;
-
-            &:hover {
-                background-color: rgba(255, 255, 255, 0.4);
-                color: red;
-            }
-        }
+@media (hover: hover) and (pointer: fine) {
+    #game-control-box button:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+        color: red;
     }
+
 }
-    */
