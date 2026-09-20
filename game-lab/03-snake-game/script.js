@@ -112,13 +112,6 @@ for (let i = 0; i < totalCells; i++) {
 
 
 // - Snake Creation Section --
-const directionAngles = {
-    right: 0,
-    down: 90,
-    left: 180,
-    up: 270
-};
-
 let snake = [
     { row: 10, column: 10 },
     { row: 10, column: 9 },
@@ -156,22 +149,6 @@ function renderSnake() {
 
 renderSnake();
 
-
-function rotateSnake() {
-
-}
-
-function growSnake() {
-    snake.forEach(segment => {
-        segment.style.scale = '1.1';
-    });
-
-    setTimeout(() => {
-        snake.forEach(segment => {
-            segment.style.scale = '1';
-        });
-    }, 150);
-}
 
 // - Occupied Cells --
 function occupied(row, column) {
@@ -453,7 +430,6 @@ function moveSnake() {
     snake.unshift(newHead);
 
     if (ateFood) {
-        //growSnake();
         handleGameScore();
     } else {
         snake.pop();
@@ -525,7 +501,7 @@ panelRestartBtn.addEventListener('click', () => {
 function handleGameState() {
     if (gameState === 'home') {
         resetGame();
-        panelTxt.textContent = 'Touch start button to play!!!';
+        panelTxt.textContent = 'Touch the start button to play!!!';
         panel.classList.add('home');
         panel.classList.remove('pause', 'game-over');
         gameStatus.classList.remove('show', 'inactive');

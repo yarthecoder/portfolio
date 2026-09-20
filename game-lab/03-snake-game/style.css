@@ -209,6 +209,9 @@ header {
         gap: 100px;
 
         button {
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: none;
             display: none;
             cursor: pointer;
             font-size: 25px;
@@ -253,6 +256,9 @@ header {
         gap: 100px;
 
         button {
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: none;
             cursor: pointer;
             width: 90px;
             font-size: 16px;
@@ -377,7 +383,7 @@ header {
 
 .cell.food {
     background-color: yellow;
-    border: 1px solid #202d28;
+    border: 2px solid #202d28;
     font-size: 15px;
 }
 
@@ -387,19 +393,18 @@ header {
 }
 
 .cell.snake-tail {
+    background-color: rgb(32, 146, 83);
     border: 1px solid #202d28;
-    
 }
 
 .cell.flash {
     background-color: rgb(220, 220, 220);
-    border: 1px solid #202d28;
+    border: 2px solid #202d28;
 }
 
 .cell.snake-head {
     background-color: rgb(235, 79, 79);
 }
-
 
 #game-control-box {
     background-color: darkgreen;
@@ -409,19 +414,41 @@ header {
     padding: 5px;
     pointer-events: none;
 
+    .upper-box{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5px;
+    }
+
     button {
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: none;
         cursor: pointer;
         width: 40px;
+        aspect-ratio: 1;
         font-size: 22px;
         background-color: silver;
         color: black;
         border-radius: 10px;
-        margin: 5px;
+        margin: 0 5px;
 
         &:hover {
             background-color: rgba(255, 255, 255, 0.4);
             color: red;
         }
+
+        &:active {
+            background-color: silver;
+            color: black;
+        }
+    }
+
+    .boost-button {
+        width: 60px;
+        font-size: 30px;
+        border-radius: 20px;
     }
 }
 
@@ -438,6 +465,7 @@ header {
         color: grey;
     }
 }
+
 
 /*
 @media screen {
