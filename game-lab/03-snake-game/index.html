@@ -46,53 +46,75 @@
             </section>
 
             <section id="right-side">
+
               <div class="upper-box">
                 <span class="speed">Speed: 30%</span> 
                 <span class="boost"><i class="fa-solid fa-bolt"></i></span>
               </div>
+
               <div class="lower-box">
                 <span class="setting-box">
-                  <button class="restartButton status-restart" aria-label="Restart game" title="Restart game"><i class="fa-solid fa-rotate-left"></i></button>
-                  <button class="pauseButton" aria-label="Pause game" title="Pause game">
+
+                  <button class="restart-button status-restart" aria-label="Restart game" title="Restart game"><i class="fa-solid fa-rotate-left"></i></button>
+
+                  <button class="pause-button" aria-label="Pause game" title="Pause game">
                     <i class="fa-solid fa-pause"></i>
-                  </button>                 
-                  <button class="homeButton status-home" aria-label="Go home" title="Go home"><i class="fa-solid fa-home"></i></button>
+                  </button>    
+
+                  <button class="home-button status-home" aria-label="Go home" title="Go home">
+                    <i class="fa-solid fa-home"></i>
+                  </button>
+
                 </span>
               </div>
+
             </section>
           </header>
 
-          <section id="game-board">
-    
+          <section id="game-content">
+
+            <div id="game-board"></div>
+
             <div id="panel">
+              <header id="panel-header">
+                <div class="heading-section">
+                  <span class="heading-icon">
+                    <i class="fa-solid fa-gear"></i>
+                  </span>
+                  <h3 class="heading-title">Game Setting</h3>
+                </div>
+                <button class="exit-panel-button" aria-label="Exit" title="Exit">
+                  <i class="fa-solid fa-x"></i>
+                </button>
+              </header>
 
               <p class="panel-text">Touch the start button to play!!!</p>
         
               <section class="navigation-buttons">
 
-                <button class="settingButton">
+                <button class="setting-button">
                   <i class="fa-solid fa-gear"></i>
                   <span class="tooltip">Setting</span> 
                 </button>
-                <button class="infoButton">
-                  <i class="fa-solid fa-info"></i>
-                  <span class="tooltip">Game Info</span>
-                </button> 
-                <button class="startButton">
+                <button class="start-button">
                   <i class="fa-solid fa-play"></i>
                   <span class="tooltip">Start</span> 
                 </button>
+                <button class="info-button">
+                  <i class="fa-solid fa-info"></i>
+                  <span class="tooltip">Game Info</span>
+                </button> 
                 
-                <button class="playButton">
+                <button class="play-button">
                   <i class="fa-solid fa-play"></i>
                   <span class="tooltip">Play</span> 
                 </button>
                            
-                <button class="homeButton panel-home">
+                <button class="home-button panel-home">
                   <i class="fa-solid fa-home"></i>
                   <span class="tooltip">Home</span> 
                 </button>
-                <button class="restartButton panel-restart">
+                <button class="restart-button panel-restart">
                   <i class="fa-solid fa-rotate-left"></i>
                   <span class="tooltip">Restart</span> 
                 </button>
@@ -102,6 +124,54 @@
               <section class="confirm-panel-buttons">
                 <button class="cancel-button">Cancel</button>
                 <button class="confirm-button">Confirm</button>
+              </section>
+
+              <section id="game-setting">
+  
+                <div class="game-board-size-selection">
+                  <h4>🎮 Game Board Size</h4>
+                  <section class="radio-section">
+                    <label>
+                      <input type="radio" name="board-size" value="small">
+                      Small
+                      <br>15 rows x 20 columns
+                    </label>
+
+                    <label>
+                        <input type="radio" name="board-size" value="medium" checked>
+                        Medium
+                        <br>15 rows x 25 columns
+                    </label>
+
+                    <label>
+                        <input type="radio" name="board-size" value="large">
+                        Large
+                        <br>20 rows x 25 columns
+                    </label>
+                  </section>
+                </div>
+                <!--
+                <div class="sound-effect">
+                  <h4>🔊 Sound Effect</h4>
+                  <section class="checkbox-section">
+                    <label>
+                        <input type="checkbox" name="music">
+                        Music 🎵
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="sound">
+                        Sound 🔉
+                    </label>
+                  </section>
+                </div>
+                -->
+                <button id="apply-button">Apply</button>
+
+              </section>
+
+              <section id="game-infomation">
+                
               </section>
 
             </div>

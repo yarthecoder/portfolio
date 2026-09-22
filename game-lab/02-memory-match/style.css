@@ -112,6 +112,9 @@ main {
     max-width: 500px;
     position: relative;
     gap: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
 }
 
 #gameScore {

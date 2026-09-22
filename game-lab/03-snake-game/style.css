@@ -20,9 +20,6 @@ body {
 main {
     background-color: beige;
     width: var(--main-width);
-    p {
-        text-align: justify;
-    }
 }
 
 .container {
@@ -49,8 +46,6 @@ header {
             transform: scale(1.2) rotate(10deg);
         }
     }
-    
-    
 }
 
 /* -- Expand section -- */
@@ -110,7 +105,7 @@ header {
 
 #demoCanvas {
     background-color: rgb(220, 220, 220);
-    padding: 20px 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -123,8 +118,13 @@ header {
     justify-content: center;
     align-items: center;
     width:  min(600px, 100%);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
 }
 
+
+/* ---- Game Header Section ----- */
 #game-status {
     display: none;
     justify-content: space-between;
@@ -176,6 +176,53 @@ header {
 }
 
 
+/* ---- Game Content Section ----- */
+#game-content {
+    display: flex;
+    position: relative;
+    width: 100%;
+}
+
+#game-board {
+    background-color: #202d28;
+    display: grid;
+    width: 100%;
+
+    .cell {
+        background-color: #202d28;
+        border: 0.5px solid rgba(200, 200, 200, 0.1);
+        width: 100%;
+        aspect-ratio: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .cell.food {
+        background-color: yellow;
+        border: 2px solid #202d28;
+        font-size: 15px;
+    }
+
+    .cell.snake {
+        background-color: rgb(75, 190, 125);
+        border: 1px solid #202d28;
+    }
+
+    .cell.snake-tail {
+        background-color: rgb(32, 146, 83);
+        border: 1px solid #202d28;
+    }
+
+    .cell.flash {
+        background-color: rgb(220, 220, 220);
+        border: 2px solid #202d28;
+    }
+
+    .cell.snake-head {
+        background-color: rgb(235, 79, 79);
+    }
+}
 
 #panel {
     background-color: rgba(45, 45, 45, 0.2);
@@ -195,6 +242,31 @@ header {
     pointer-events: none;
     transform: translateY(20px);
     transition: opacity 0.3s ease, transform 0.6s ease;
+
+    #panel-header {
+        display: none;
+        justify-content: space-between;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        padding: 20px;
+
+        .heading-section {
+            display: flex;
+            gap: 5px;
+        }
+
+        .exit-panel-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;  
+            font-size: 22px;
+
+            &:hover {
+                transform: scale(1.2) rotate(10deg);
+            }
+        }
+    }
 
     .panel-text{
         display: none;
@@ -294,6 +366,47 @@ header {
     }
 }
 
+#game-setting {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 50px;
+    overflow-x: hidden;
+    padding: 20px 0;
+
+    .game-board-size-selection, .sound-effect {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
+
+        .radio-section, .checkbox-section {
+            display: flex;
+            justify-content: space-around;
+        }
+    }
+
+    #apply-button {
+        cursor: pointer;
+        width: 90px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 10px;
+        padding: 3px;
+        text-transform: uppercase;
+    }
+}
+
+#game-info {
+    display: none;
+    width: 100%;
+    height: 1000px;
+    overflow-x: hidden;
+    padding: 20px 0;
+}
+
 #panel.home {
     opacity: 1;
     visibility: visible;
@@ -304,15 +417,24 @@ header {
         display: block;
     }
 
-    .infoButton {
-        display: block;
-        pointer-events: auto;
-    }
+    .navigation-buttons {
+        gap: 70px;
+        
+        .setting-button {
+            display: block;
+            pointer-events: auto;
+        }
 
-    .startButton {
-        display: block;
-        pointer-events: auto;
-    } 
+        .start-button {
+            display: block;
+            pointer-events: auto;
+        } 
+
+        .info-button {
+            display: block;
+            pointer-events: auto;
+        }
+    }
 }
 
 #panel.pause {
@@ -321,7 +443,7 @@ header {
     pointer-events: auto;
     transform: translateY(0);
 
-    .playButton {
+    .play-button {
         display: block;
         pointer-events: auto;
     }
@@ -337,11 +459,11 @@ header {
         display: block;
     }
 
-    .restartButton {
+    .restart-button {
         display: block;
         pointer-events: auto;
     }
-    .homeButton {
+    .home-button {
         display: block;
         pointer-events: auto;
     }    
@@ -366,49 +488,42 @@ header {
     }
 }
 
+#panel.setting {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+    background-color: rgb(130, 210, 210);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    padding: 20px;
 
-#game-board {
-    background-color: #202d28;
-    display: grid;
-    width: 100%;
-    position: relative;
+    #panel-header {
+        display: flex;
+    }
+
+    #game-setting {
+        display: flex;
+    }
 }
 
-.cell {
-    background-color: #202d28;
-    border: 0.5px solid rgba(255, 255, 255, 0.12);
-    width: 100%;
-    aspect-ratio: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#panel.info {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+    background-color: rgb(130, 210, 210);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    padding: 20px;
+
+    #panel-header {
+        display: flex;
+    }
 }
 
-.cell.food {
-    background-color: yellow;
-    border: 2px solid #202d28;
-    font-size: 15px;
-}
 
-.cell.snake {
-    background-color: rgb(75, 190, 125);
-    border: 1px solid #202d28;
-}
-
-.cell.snake-tail {
-    background-color: rgb(32, 146, 83);
-    border: 1px solid #202d28;
-}
-
-.cell.flash {
-    background-color: rgb(220, 220, 220);
-    border: 2px solid #202d28;
-}
-
-.cell.snake-head {
-    background-color: rgb(235, 79, 79);
-}
-
+/* ---- Game Footer Section ----- */
 #game-control-box {
     background-color: darkgreen;
     display: none;
@@ -436,12 +551,7 @@ header {
         background-color: silver;
         color: black;
         border-radius: 10px;
-        margin: 0 5px;
-
-        &:hover {
-        background-color: rgba(255, 255, 255, 0.4);
-        color: red;
-        }    
+        margin: 0 5px;  
     }
 
     .boost-button {

@@ -33,8 +33,8 @@ expandBtn.addEventListener('click', () => {
 
 // -- DOM Refrence --
 const gameBoard = document.querySelector('#game-board');
-const gameStatus = document.querySelector('#game-status');
 
+const gameStatus = document.querySelector('#game-status');
 const life = document.querySelector('.life');
 const score = document.querySelector('.score');
 const speed = document.querySelector('.speed');
@@ -43,13 +43,19 @@ const statusHomeBtn = document.querySelector('.status-home');
 const statusRestartBtn = document.querySelector('.status-restart');
 
 const panel = document.querySelector('#panel');
+const exitPanelButton = document.querySelector('.exit-panel-button');
+const headingTitle = document.querySelector('.heading-title');
+const headingIcon = document.querySelector('.heading-icon i');
 const panelTxt = document.querySelector('.panel-text');
+
+const settingButton = document.querySelector('.setting-button');
 const panelHomeBtn = document.querySelector('.panel-home');
-const startButton = document.querySelector('.startButton');
-const pauseButton = document.querySelector('.pauseButton');
-const playButton = document.querySelector('.playButton');
+const infoButton = document.querySelector('.info-button');
+
+const startButton = document.querySelector('.start-button');
+const pauseButton = document.querySelector('.pause-button');
+const playButton = document.querySelector('.play-button');
 const panelRestartBtn = document.querySelector('.panel-restart');
-const infoButton = document.querySelector('.infoButton');
 
 const cancelButton = document.querySelector('.cancel-button');
 const confirmButton = document.querySelector('.confirm-button');
@@ -57,6 +63,8 @@ const confirmButton = document.querySelector('.confirm-button');
 const gameControlBox = document.querySelector('#game-control-box');
 const controlButtons = document.querySelectorAll('.control-button');
 const boostButton = document.querySelector('.boost-button');
+
+const applySettingBtn = document.querySelector('#apply-button');
 
 
 let gameScore = 0;
@@ -80,12 +88,28 @@ let confirmationType = null;
 
 
 // - Game Board Creation Section --
-let row = 15;
-let column = 25;
-const totalCells = row * column;
+const boardSizes = {
+    small: {
+        rows: 15,
+        columns: 20
+    },
 
-gameBoard.style.gridTemplateRows = `repeat(${row}, minmax(0, 1fr))`;
-gameBoard.style.gridTemplateColumns = `repeat(${column},  minmax(0, 1fr))`;
+    medium: {
+        rows: 15,
+        columns: 25
+    },
+
+    large: {
+        rows: 20,
+        columns: 25
+    }
+};
+
+let boardConfig = boardSizes.medium;
+
+let row = boardConfig.rows;
+let column = boardConfig.columns;
+let totalCells = row * column;
 
 function createCell() {
     const cell = document.createElement('div');
@@ -96,26 +120,51 @@ function createCell() {
 
 const cells = [];
 
-for (let i = 0; i < totalCells; i++) {
-    const cell = createCell();
+function buildGameBoard() {
+    cells.length = 0;
+    gameBoard.innerHTML = '';
     
-    const rowIndex = Math.floor(i / column);
-    const columnIndex = i % column;
+    gameBoard.style.gridTemplateRows = `repeat(${row}, minmax(0, 1fr))`;
+    gameBoard.style.gridTemplateColumns = `repeat(${column}, minmax(0, 1fr))`;
 
-    cell.dataset.row = rowIndex;
-    cell.dataset.column = columnIndex;
+    for (let i = 0; i < totalCells; i++) {
+        const cell = createCell();
+        const rowIndex = Math.floor(i / column);
+        const columnIndex = i % column;
 
-    cells.push(cell);
-    gameBoard.append(cell);
+        cell.dataset.row = rowIndex;
+        cell.dataset.column = columnIndex;
+
+        cells.push(cell);
+        gameBoard.append(cell);
+    }
 }
 
+buildGameBoard();
+
+
+applySettingBtn.addEventListener('click', () => {
+    const selectedRadio = document.querySelector('input[name="board-size"]:checked');
+
+    if (!selectedRadio) return;
+
+    const selectedSize = selectedRadio.value;
+    boardConfig = boardSizes[selectedSize];
+    
+    row = boardConfig.rows;
+    column = boardConfig.columns;
+    totalCells = row * column;
+
+    buildGameBoard();
+    resetGame();
+});
 
 
 // - Snake Creation Section --
 let snake = [
-    { row: 10, column: 10 },
-    { row: 10, column: 9 },
-    { row: 10, column: 8 }
+    { row: 7, column: 7 },
+    { row: 7, column: 6 },
+    { row: 7, column: 5 }
 ];
 
 function renderSnake() {
@@ -174,8 +223,6 @@ function renderFood() {
     foodCell.classList.add('food');
 }
 
-renderFood();
-
 function createNewFood () {
     let randomRow;
     let randomColumn;
@@ -200,7 +247,10 @@ function createNewFood () {
     renderFood();
 }
 
+createNewFood ();
 
+
+// - Helper Functions --
 function updateLife () {
     if (snakeLife === 3) {
         life.textContent = "LIFE: ❤️❤️❤️";
@@ -290,7 +340,7 @@ function handleGameScore() {
     score.textContent = "SCORE: " + gameScore;
     setTimeout(() => {
         createNewFood()
-    }, 200);
+    }, 0);
 }
 
 
@@ -452,11 +502,13 @@ function gameLoop() {
 }
 
 function resetGame() {
+    clearTimeout(timing);
+    timing = null;
 
     snake = [
-        { row: 10, column: 10 },
-        { row: 10, column: 9 },
-        { row: 10, column: 8 }
+        { row: 7, column: 7 },
+        { row: 7, column: 6 },
+        { row: 7, column: 5 }
     ];
 
     direction = {
@@ -470,43 +522,50 @@ function resetGame() {
     };
 
     snakeSnapshots.length = 0;
-    renderSnake();
-    createNewFood();
-
     isShield = false;
     gameOver = false;
-    gameState = 'play';
-    handleGameState();
-    
+    isBoosting = false;
+    isSlowing = false;
+
+    snakeLife = 3;
+    currentSpeed = startingSpeed;
     gameScore = 0;
     score.textContent = "SCORE: " + gameScore;
 
-    snakeLife = 3;
     updateLife();
-
-    isBoosting = false;
-    isSlowing = false;
-    clearTimeout(timing);
-    timing = null;
-    currentSpeed = startingSpeed;
     updateSpeed();
+    createNewFood();
+    renderSnake();
 }
 
 panelRestartBtn.addEventListener('click', () => {
     resetGame();
+    gameState = 'play';
+    handleGameState();
     gameLoop();
 });
 
 
 function handleGameState() {
     if (gameState === 'home') {
-        resetGame();
-        panelTxt.textContent = 'Touch the start button to play!!!';
+        panelTxt.textContent = 'Are you ready to hunt!';
         panel.classList.add('home');
-        panel.classList.remove('pause', 'game-over');
+        panel.classList.remove('pause', 'game-over', 'setting', 'info');
         gameStatus.classList.remove('show', 'inactive');
         gameControlBox.classList.remove('show', 'inactive');
     } 
+    else if (gameState === 'gameSetting') {
+        panel.classList.add('setting');
+        panel.classList.remove('home');
+        headingTitle.textContent = 'Game Setting';
+        headingIcon.className = "fa-solid fa-gear";
+    }
+    else  if (gameState === 'gameInfo') {
+        panel.classList.add('info');
+        panel.classList.remove('home');
+        headingTitle.textContent = 'Game Infomation';
+        headingIcon.className = "fa-solid fa-circle-info";
+    }
     else if (gameState === 'play') {
         panel.classList.remove('home', 'pause', 'game-over');
         gameStatus.classList.add('show');
@@ -528,7 +587,7 @@ function handleGameState() {
         gameControlBox.classList.add('inactive');
     }
 }
-
+  
 handleGameState();
 
 
@@ -552,6 +611,10 @@ handleClick(panelHomeBtn, 'home');
 handleClick(startButton, 'play');
 handleClick(pauseButton, 'pause');
 handleClick(playButton, 'play');
+handleClick(settingButton, 'gameSetting')
+handleClick(infoButton, 'gameInfo');
+handleClick(exitPanelButton, 'home');
+
 
 
 const confirmationConfig = {
@@ -560,8 +623,10 @@ const confirmationConfig = {
         message: 'Do you want to go home?',
         confirmText: 'Home',
         action: () => { 
+            resetGame();
             gameState = 'home'; 
             handleGameState(); 
+            
         }
     },
 
@@ -570,6 +635,8 @@ const confirmationConfig = {
         confirmText: 'Restart',
         action: () => { 
             resetGame(); 
+            gameState = 'play';
+            handleGameState();
             gameLoop(); 
         }
     }
