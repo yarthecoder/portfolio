@@ -276,6 +276,7 @@ header {
         border-radius: 10px;
         font-size: 30px;
         font-weight: bold;
+        text-align: center;
     }
 
     .navigation-buttons {
@@ -298,7 +299,6 @@ header {
             color: red;
             pointer-events: none;
             position: relative;
-            
             
 
             .tooltip {
@@ -399,12 +399,37 @@ header {
     }
 }
 
-#game-info {
+#game-information {
     display: none;
     width: 100%;
-    height: 1000px;
     overflow-x: hidden;
+    overflow-y: auto;
     padding: 20px 0;
+
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    h3 {
+        margin: 40px auto 20px;
+    }
+
+    p {
+        margin: 20px 0;
+        text-align: justify;
+    }
+
+    img, video {
+        background-color: rgb(60, 60, 60);
+        width: min(100%, 250px);
+        height: auto;
+        object-fit: cover;
+        display: block;
+        margin: 20px auto;
+        padding: 10px;
+        border-radius: 0.5rem;
+    }
 }
 
 #panel.home {
@@ -412,10 +437,6 @@ header {
     visibility: visible;
     pointer-events: auto;
     transform: translateY(0);
-
-    .panel-text {
-        display: block;
-    }
 
     .navigation-buttons {
         gap: 70px;
@@ -460,6 +481,27 @@ header {
     }
 
     .restart-button {
+        display: block;
+        pointer-events: auto;
+    }
+    .home-button {
+        display: block;
+        pointer-events: auto;
+    }    
+}
+
+#panel.level-complete {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+
+    .panel-text {
+        display: block;
+        
+    }
+
+    .setting-button {
         display: block;
         pointer-events: auto;
     }
@@ -520,6 +562,10 @@ header {
     #panel-header {
         display: flex;
     }
+
+    #game-information {
+        display: block;
+    }
 }
 
 
@@ -529,7 +575,7 @@ header {
     display: none;
     justify-content: space-around;
     align-items: center;
-    padding: 5px;
+    padding: 10px;
     pointer-events: none;
     width: 100%;
 
@@ -545,8 +591,8 @@ header {
         -webkit-user-select: none;
         touch-action: none;
         cursor: pointer;
-        width: 40px;
-        aspect-ratio: 1;
+        width: 60px;
+        height: 30px;
         font-size: 22px;
         background-color: silver;
         color: black;
@@ -556,6 +602,7 @@ header {
 
     .boost-button {
         width: 60px;
+        height: 60px;
         font-size: 30px;
         border-radius: 20px;
     }

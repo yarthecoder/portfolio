@@ -65,38 +65,45 @@ const controlButtons = document.querySelectorAll('.control-button');
 const boostButton = document.querySelector('.boost-button');
 
 const applySettingBtn = document.querySelector('#apply-button');
+const soundToggle = document.querySelector('#sound-toggle');
+const musicToggle = document.querySelector('#music-toggle');
 
-
-let gameScore = 0;
-let snakeLife = 3;
-
-const startingSpeed = 400;
-let currentSpeed = startingSpeed;
-const maxSpeed = 150;
-const boostSpeed = 100;
-const safeSpeed = 1000;
-const speedDifferent = startingSpeed - maxSpeed;
-let snakeSpeed = currentSpeed;
-let isBoosting = false;
-let isSlowing = false;
-let timing = null;
 
 let gameState = 'home';
 let gameOver = false;
 let isShield = false;
+let isBoosting = false;
+let isSlowing = false;
+
+let gameTimer = null;
+let shieldTimer = null;
+let slowTimer = null;
+let foodTimer = null;
+let gameOverTimer = null;
+let levelCompleteTimer = null;
 let confirmationType = null;
 
+const startingSpeed = 400;
+const maxSpeed = 150;
+const boostSpeed = 100;
+const safeSpeed = 1000;
+const speedDifferent = startingSpeed - maxSpeed;
+let currentSpeed = startingSpeed;
+let snakeSpeed = currentSpeed;
+
+let gameScore = 0;
+let snakeLife = 3;
 
 // - Game Board Creation Section --
 const boardSizes = {
     small: {
-        rows: 15,
-        columns: 20
+        rows: 10,
+        columns: 15
     },
 
     medium: {
         rows: 15,
-        columns: 25
+        columns: 20
     },
 
     large: {
@@ -105,7 +112,7 @@ const boardSizes = {
     }
 };
 
-let boardConfig = boardSizes.medium;
+let boardConfig = boardSizes.small;
 
 let row = boardConfig.rows;
 let column = boardConfig.columns;
@@ -223,32 +230,77 @@ function renderFood() {
     foodCell.classList.add('food');
 }
 
+
 function createNewFood () {
-    let randomRow;
-    let randomColumn;
-    let isOccupied = true;
-
-    while (isOccupied) {
-        randomRow = Math.floor(Math.random() * row);
-        randomColumn = Math.floor(Math.random() * column);
-
-        isOccupied = occupied(randomRow, randomColumn);
-    }
-    
-    food = {
-        row: randomRow,
-        column: randomColumn
-    };
-
     cells.forEach(cell => {
         cell.classList.remove('food');
     });
 
+    const availableCells = cells.filter(cell =>
+        !occupied(Number(cell.dataset.row), Number(cell.dataset.column))
+    );
+
+    if (availableCells.length === 0) {
+        clearTimeout(levelCompleteTimer);
+        gameOver = true;
+        
+        stopMusic();
+        levelCompleteTimer = setTimeout(() => {
+            levelCompleteTimer = null;
+            gameState = 'levelComplete';
+            handleGameState();
+            playSound(sounds.levelComplete);
+        }, 1500);
+
+        return;
+    }
+
+    const foodCell = availableCells[Math.floor(Math.random() * availableCells.length)];
+    food = {
+        row: Number(foodCell.dataset.row),
+        column: Number(foodCell.dataset.column)
+    };
     renderFood();
 }
 
+
 createNewFood ();
 
+
+// - Sound Effects Section --
+const backgroundMusic = new Audio('./assets/sounds/background-music.mp3')
+
+const sounds = {
+    eat: new Audio('./assets/sounds/eat.mp3'),
+    collision: new Audio('./assets/sounds/collision.mp3'),
+    turn: new Audio('./assets/sounds/button.mp3'),
+    boost: new Audio('./assets/sounds/boost.mp3'),
+    noLife: new Audio('./assets/sounds/no-life.mp3'),
+    gameOver: new Audio('./assets/sounds/game-over.mp3'),
+    levelComplete: new Audio('./assets/sounds/level-complete.mp3'),
+};
+
+function playMusic() {
+    if (!musicToggle.checked) return;
+    if (gameState !== 'play') return;
+    
+    backgroundMusic.volume = 0.3;
+    backgroundMusic.loop = true;
+    backgroundMusic.play();
+}
+
+function stopMusic() {
+    backgroundMusic.pause();
+    backgroundMusic.currentTime = 0;
+}
+
+function playSound(sound) {
+    if (!soundToggle.checked) return;
+
+    sound.currentTime = 0;
+    sound.volume = 0.3;
+    sound.play();
+}
 
 // - Helper Functions --
 function updateLife () {
@@ -312,21 +364,30 @@ function checkFoodCollision(head) {
 function handleCollision() {
     isBoosting = false;
     boost.classList.remove('show');
+    
     snakeLife--;
     updateLife();
-    
     moveBack();
-    slowDown();
-    shieldOn();
+
+    if (snakeLife !== 0) { 
+        playSound(sounds.collision); 
+        slowDown();
+        shieldOn();
+    }
         
     if (snakeLife === 0) {
+        clearTimeout(gameOverTimer);
         gameOver = true;
-        gameState = 'gameOver';
-        clearTimeout(timing);
-        timing = null;
-        setTimeout(() => {
+        
+        stopMusic();
+        playSound(sounds.noLife);
+
+        gameOverTimer = setTimeout(() => {
+            gameOverTimer = null;
+            gameState = 'gameOver';
             handleGameState();
-        }, 1000);
+            playSound(sounds.gameOver);
+        }, 1500);
         
         return;
     }
@@ -336,11 +397,13 @@ function handleGameScore() {
     gameScore++;
     currentSpeed -= 5;
     updateSpeed();
+    clearTimeout(foodTimer);
 
     score.textContent = "SCORE: " + gameScore;
-    setTimeout(() => {
-        createNewFood()
-    }, 0);
+    foodTimer = setTimeout(() => {
+        createNewFood();
+        foodTimer = null;
+    }, 500);
 }
 
 
@@ -358,24 +421,28 @@ let nextDirection = {
 function turnUp() {
     if (direction.row !== 1 && snake[0].row !== 0) {
         nextDirection = { row: -1, column: 0 };
+        playSound(sounds.turn);
     }
 }
 
 function turnDown() {
     if (direction.row !== -1 && snake[0].row !== (row - 1)) {
         nextDirection = { row: 1, column: 0 };
+        playSound(sounds.turn);
     }
 }
 
 function turnLeft() {
     if (direction.column !== 1 && snake[0].column !== 0) {
         nextDirection = { row: 0, column: -1 };
+        playSound(sounds.turn);
     }
 }
 
 function turnRight() {
     if (direction.column !== -1 && snake[0].column !== (column - 1)) {
         nextDirection = { row: 0, column: 1 };
+        playSound(sounds.turn);
     }
 }
 
@@ -384,25 +451,44 @@ function autoTurn() {
         if (food.row < snake[0].row) {
             turnUp();
         }
-        if (food.row > snake[0].row) {
+        else if (food.row > snake[0].row) {
             turnDown();
+        }
+        else { 
+            if (snake[0].row <= row / 2) {
+                turnDown();
+            }
+            else {
+                turnUp();
+            }
         }
     } else if (direction.row !== 0) {
         if (food.column < snake[0].column) {
             turnLeft();
         }
-         if (food.column > snake[0].column) {
+        else if (food.column > snake[0].column) {
             turnRight();
+        }
+        else { 
+            if (snake[0].column <= column / 2) {
+                turnRight();
+            }
+            else {
+                turnLeft();
+            }
         }
     }
 }
 
 function shieldOn() {
+    clearTimeout(shieldTimer);
+
     isShield = true;
     autoTurn();
     
-    setTimeout(() => {
+    shieldTimer = setTimeout(() => {
         isShield = false;
+        shieldTimer = null;
     }, 10000);
 }
 
@@ -426,11 +512,15 @@ function recordPositions() {
 }
 
 function slowDown() {
+    clearTimeout(slowTimer);
+
     isSlowing = true;
     updateSpeed();
-    setTimeout(() => {
+
+    slowTimer = setTimeout(() => {
         isSlowing = false;
         updateSpeed();
+        slowTimer = null;
     }, 3000);
 }
 
@@ -480,6 +570,7 @@ function moveSnake() {
     snake.unshift(newHead);
 
     if (ateFood) {
+        playSound(sounds.eat);
         handleGameScore();
     } else {
         snake.pop();
@@ -494,16 +585,31 @@ function gameLoop() {
     moveSnake();
 
     if (!gameOver && gameState === 'play') {
-        clearTimeout(timing);
-        timing = setTimeout(gameLoop, snakeSpeed);
+        clearTimeout(gameTimer);
+        gameTimer = setTimeout(gameLoop, snakeSpeed);
     } else {
-        timing = null;
+        gameTimer = null;
     }
 }
 
 function resetGame() {
-    clearTimeout(timing);
-    timing = null;
+    clearTimeout(gameTimer);
+    gameTimer = null;
+
+    clearTimeout(shieldTimer);
+    shieldTimer = null;
+
+    clearTimeout(slowTimer);
+    slowTimer = null;
+
+    clearTimeout(foodTimer);
+    foodTimer = null;
+
+    clearTimeout(levelCompleteTimer);
+    levelCompleteTimer = null;
+
+    clearTimeout(gameOverTimer);
+    gameOverTimer = null;
 
     snake = [
         { row: 7, column: 7 },
@@ -522,16 +628,17 @@ function resetGame() {
     };
 
     snakeSnapshots.length = 0;
-    isShield = false;
     gameOver = false;
-    isBoosting = false;
+    isShield = false;
     isSlowing = false;
-
+    isBoosting = false;
+    boost.classList.remove('show');
+    
     snakeLife = 3;
     currentSpeed = startingSpeed;
     gameScore = 0;
     score.textContent = "SCORE: " + gameScore;
-
+    stopMusic();
     updateLife();
     updateSpeed();
     createNewFood();
@@ -547,44 +654,64 @@ panelRestartBtn.addEventListener('click', () => {
 
 
 function handleGameState() {
+    panel.classList.remove(
+        'home',
+        'setting',
+        'info',
+        'pause',
+        'game-over',
+        'level-complete'
+    );
+
+    gameStatus.classList.remove('show', 'inactive');
+    gameControlBox.classList.remove('show', 'inactive');
+
     if (gameState === 'home') {
-        panelTxt.textContent = 'Are you ready to hunt!';
         panel.classList.add('home');
-        panel.classList.remove('pause', 'game-over', 'setting', 'info');
-        gameStatus.classList.remove('show', 'inactive');
-        gameControlBox.classList.remove('show', 'inactive');
     } 
+    
     else if (gameState === 'gameSetting') {
         panel.classList.add('setting');
-        panel.classList.remove('home');
+
         headingTitle.textContent = 'Game Setting';
         headingIcon.className = "fa-solid fa-gear";
     }
-    else  if (gameState === 'gameInfo') {
+
+    else if (gameState === 'gameInfo') {
         panel.classList.add('info');
-        panel.classList.remove('home');
-        headingTitle.textContent = 'Game Infomation';
+
+        headingTitle.textContent = 'Game Information';
         headingIcon.className = "fa-solid fa-circle-info";
     }
+
     else if (gameState === 'play') {
-        panel.classList.remove('home', 'pause', 'game-over');
         gameStatus.classList.add('show');
-        gameStatus.classList.remove('inactive');
         gameControlBox.classList.add('show');
-        gameControlBox.classList.remove('inactive');
+        playMusic();
     } 
+    
     else if (gameState === 'pause') {
         panel.classList.add('pause');
-        panel.classList.remove('home', 'game-over');
-        gameStatus.classList.add('inactive');
-        gameControlBox.classList.add('inactive');
+
+        gameStatus.classList.add('show', 'inactive');
+        gameControlBox.classList.add('show', 'inactive');
+        backgroundMusic.pause();
     } 
+
     else if (gameState === 'gameOver') {
-        panelTxt.textContent = 'Game Over!!!';
         panel.classList.add('game-over');
-        panel.classList.remove('home', 'pause');
-        gameStatus.classList.add('inactive');
-        gameControlBox.classList.add('inactive');
+        panelTxt.textContent = 'Game Over!!!';
+
+        gameStatus.classList.add('show', 'inactive');
+        gameControlBox.classList.add('show', 'inactive');    
+    }
+
+    else if (gameState === 'levelComplete') {
+        panel.classList.add('level-complete');
+        panelTxt.textContent = 'Yaaay!!! You are the best! Try to play on another game board';
+
+        gameStatus.classList.add('show', 'inactive');
+        gameControlBox.classList.add('show', 'inactive');
     }
 }
   
@@ -596,14 +723,16 @@ function handleClick(button, state) {
         gameState = state;
         handleGameState();
 
-        if (state === 'play' && !gameOver && timing === null) {
+        if (state === 'play' && !gameOver && gameTimer === null) {
             gameLoop();
         }
 
         if (state !== 'play') {
-            clearTimeout(timing);
-            timing = null;
+            clearTimeout(gameTimer);
+            gameTimer = null;
         }
+
+        if (button === panelHomeBtn) { resetGame(); }
     });
 }
 
@@ -616,17 +745,15 @@ handleClick(infoButton, 'gameInfo');
 handleClick(exitPanelButton, 'home');
 
 
-
 const confirmationConfig = {
 
     home: {
         message: 'Do you want to go home?',
         confirmText: 'Home',
         action: () => { 
-            resetGame();
             gameState = 'home'; 
             handleGameState(); 
-            
+            resetGame();
         }
     },
 
@@ -655,8 +782,8 @@ function showConfirmation(type) {
     gameState = 'pause';
     handleGameState();
 
-    clearTimeout(timing);
-    timing = null;
+    clearTimeout(gameTimer);
+    gameTimer = null;
 }
 
 
@@ -682,10 +809,10 @@ cancelButton.addEventListener('click', () => {
 });
 
 
-
 // - Keyboard and buttons control section --
 function handleDirection(key) {
-    
+    if (gameState !== 'play') return;
+
     switch (key) {
 
         case 'w':
@@ -709,9 +836,11 @@ function handleDirection(key) {
             break;
 
         case 'b':
-            isBoosting = true;
-            updateSpeed();
-            boost.classList.add('show');
+            if (!isBoosting) {
+                isBoosting = true;
+                playSound(sounds.boost);
+                updateSpeed();
+            }
     }
 }
 
@@ -723,13 +852,21 @@ controlButtons.forEach(button => {
 });
 
 
+
 boostButton.addEventListener('pointerdown', () => {
     isBoosting = true;
     updateSpeed();
     boost.classList.add('show');
+    playSound(sounds.boost); 
 });
 
 boostButton.addEventListener('pointerup', () => {
+    isBoosting = false;
+    updateSpeed();
+    boost.classList.remove('show');
+});
+
+boostButton.addEventListener('pointercancel', () => {
     isBoosting = false;
     updateSpeed();
     boost.classList.remove('show');
@@ -757,7 +894,7 @@ document.addEventListener('keyup', (event) => {
 
 
 
-/* 
+/* For V2
 
 function getTurnDirection() {
     if (direction.column !== 0) {

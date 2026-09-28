@@ -25,7 +25,7 @@
         </section>
         
         <p>
-          Test, beta version.
+          The classic, old, simple snake game, looks might be kidding UI but serious <strong>JavaScript</strong> underneath, I built while learning DOM.
         </p>
       </header>
       
@@ -76,6 +76,7 @@
             <div id="game-board"></div>
 
             <div id="panel">
+
               <header id="panel-header">
                 <div class="heading-section">
                   <span class="heading-icon">
@@ -88,7 +89,7 @@
                 </button>
               </header>
 
-              <p class="panel-text">Touch the start button to play!!!</p>
+              <p class="panel-text">Are You Ready to have Fun!</p>
         
               <section class="navigation-buttons">
 
@@ -102,7 +103,7 @@
                 </button>
                 <button class="info-button">
                   <i class="fa-solid fa-info"></i>
-                  <span class="tooltip">Game Info</span>
+                  <span class="tooltip">Information</span>
                 </button> 
                 
                 <button class="play-button">
@@ -132,15 +133,15 @@
                   <h4>🎮 Game Board Size</h4>
                   <section class="radio-section">
                     <label>
-                      <input type="radio" name="board-size" value="small">
+                      <input type="radio" name="board-size" value="small" checked>
                       Small
-                      <br>15 rows x 20 columns
+                      <br>10 rows x 15 columns
                     </label>
 
                     <label>
-                        <input type="radio" name="board-size" value="medium" checked>
+                        <input type="radio" name="board-size" value="medium">
                         Medium
-                        <br>15 rows x 25 columns
+                        <br>15 rows x 20 columns
                     </label>
 
                     <label>
@@ -150,29 +151,89 @@
                     </label>
                   </section>
                 </div>
-                <!--
+               
                 <div class="sound-effect">
                   <h4>🔊 Sound Effect</h4>
                   <section class="checkbox-section">
                     <label>
-                        <input type="checkbox" name="music">
+                        <input id="music-toggle" type="checkbox" name="music" checked>
                         Music 🎵
                     </label>
 
                     <label>
-                        <input type="checkbox" name="sound">
+                        <input id="sound-toggle" type="checkbox" name="sound" checked>
                         Sound 🔉
                     </label>
                   </section>
                 </div>
-                -->
+                
                 <button id="apply-button">Apply</button>
 
               </section>
 
-              <section id="game-infomation">
-                
-              </section>
+              <article id="game-information">
+
+                <h2>How to Play the Game!</h2>
+                <p>
+                    A simple, classic, and fun Snake game where the player controls
+                    the snake and guides it toward food while avoiding collisions
+                    with the walls and itself.
+                </p>
+
+                <h3>Rules</h3>
+                <p>
+                    If the snake collides with a wall or itself, it will lose one life.
+                    When the number of lives reaches 0, the game is over.
+                </p>
+
+                <p>
+                    The snake cannot turn directly in the opposite direction.
+                    For example, if the snake is moving from left to right,
+                    the player cannot immediately turn it back to the left.
+                    The snake also prevents some direction inputs when moving
+                    next to a wall. These restrictions help prevent the snake
+                    from immediately colliding with itself or the wall because
+                    of an input mistake.
+                </p>
+
+                <h3>State and Conditions</h3>
+                <p>
+                    When the snake collides with itself or a wall, it loses one life.
+                    It then moves back to its previous three positions, and its speed
+                    slows down for three seconds as a safety period. During this situation,
+                    the snake will automatically turn toward the food to help the player
+                    recover from the collision.
+                </p>
+
+                <p>
+                    <video autoplay muted loop playsinline>
+                      <source src="assets/videos/shield-mode.mp4" type="video/mp4">
+                    </video>
+                    Shield mode will then be activated for about 10 seconds with the flash effect on the snake.
+                    During this time, the snake is protected from collisions with
+                    itself and the walls, giving the player time to control the snake
+                    and handle the difficult situation.
+                </p>
+
+                <h3>How to Control</h3>
+                <p>
+                    There are several control methods for both computer and mobile.
+                </p>
+
+                <p>
+                  <img src="assets/images/snake-game-info-1.png" alt="keyboard keys image">
+                    On a computer, use the <strong>Arrow Keys</strong> keys or
+                    <strong>WASD</strong> to control the direction of the snake.
+                    <img src="assets/images/snake-game-info-2.png" alt="keyboard keys image">
+                    Press and hold the <strong>B</strong> key to boost the snake's speed.
+                    <img src="assets/images/snake-game-info-3.png" alt="game control button explaination image">
+                </p>
+
+                <p>
+                    On mobile, use the arrow buttons and boost button provided
+                    on the game display.
+                </p>
+              </article>
 
             </div>
           </section>
@@ -227,8 +288,22 @@
         <h2>What I learned from this Project</h2>
 
         <p>
-          
+          First of all, I'm so greateful to <strong>Khan Academy</strong>, I got a lot for state managment and thinking logic. That concerpt I bring here for this game from my first ever game, <strong>Beaver Stick Collector</strong>, that I built on <strong>Khan Academy</strong>.
         </p>
+
+        <p>
+          When I start to build the game, I just thought a simple and light sate manangment like I built previous 2 games. But I ended up with real and full state manange with the game. The snake looks might be simple color block but underneath JavaScript is real serious and nice state manangement that I ever written. So I want document carefully that I face up while building game.
+        </p>
+
+        <P>
+          For this game, I start with game board, cells, that I built with CSS grid, rows and column like I built on memory game. One of the most I like that grid is I can change dynamic rows and  colums, different game boards that you can change in the setting.
+        </P>
+
+        <p> 
+          And the snake and the food become simple classes of that gird.
+        </p>
+
+
 
         <button class="readHideBtn">Hide ▲</button>
       </section>
