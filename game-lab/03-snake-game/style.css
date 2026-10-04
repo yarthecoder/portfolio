@@ -28,7 +28,7 @@ main {
 }
 
 header {
-    padding: 1rem;
+    padding: 1rem 1rem 2rem;
 }
 
 #heading {
@@ -50,7 +50,7 @@ header {
 
 /* -- Expand section -- */
 .expand {
-    --max-width: 1200px;
+    --max-width: 1000px;
     --main-width: 100%;
     --canvasBody-height: auto;
 }
@@ -62,7 +62,7 @@ header {
 .commitSection {
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 2rem 1rem;
 }
 
 .readNHide {
@@ -76,7 +76,7 @@ header {
 
 #readMore {
     border-top: 1px dashed black;
-    padding: 0 2rem;
+    padding: 0 1rem;
     text-align: justify;
     opacity: 0;
     height: 0;
