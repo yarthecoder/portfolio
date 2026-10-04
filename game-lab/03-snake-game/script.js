@@ -1,4 +1,4 @@
-const readHideBtn = document.querySelectorAll('.readHideBtn');
+const readNHideBtn = document.querySelectorAll('.readNHide');
 const readMore = document.querySelector('#readMore');
 
 const expandBtn = document.querySelector('#expandBtn');
@@ -9,9 +9,10 @@ const main = document.querySelector('main');
 /* ----------------------- */
 /* ----- Read & Hide ----- */
 
-readHideBtn.forEach(btn => {
+readNHideBtn.forEach(btn => {
     btn.addEventListener('click', () => {
         readMore.classList.toggle('show');
+        window.scrollTo({ top: 0, behavior: 'smooth'});
     });
 });
 
@@ -65,8 +66,12 @@ const controlButtons = document.querySelectorAll('.control-button');
 const boostButton = document.querySelector('.boost-button');
 
 const applySettingBtn = document.querySelector('#apply-button');
-const soundToggle = document.querySelector('#sound-toggle');
 const musicToggle = document.querySelector('#music-toggle');
+const soundToggle = document.querySelector('#sound-toggle');
+const musicVolume = document.querySelector('#music-volume');
+const soundVolume = document.querySelector('#sound-volume');
+const musicVolumeText = document.querySelector('#music-volume-text');
+const soundVolumeText = document.querySelector('#sound-volume-text');
 
 
 let gameState = 'home';
@@ -169,9 +174,9 @@ applySettingBtn.addEventListener('click', () => {
 
 // - Snake Creation Section --
 let snake = [
-    { row: 7, column: 7 },
-    { row: 7, column: 6 },
-    { row: 7, column: 5 }
+    { row: 3, column: 5 },
+    { row: 3, column: 4 },
+    { row: 3, column: 3 }
 ];
 
 function renderSnake() {
@@ -243,13 +248,11 @@ function createNewFood () {
     if (availableCells.length === 0) {
         clearTimeout(levelCompleteTimer);
         gameOver = true;
-        
         stopMusic();
+
         levelCompleteTimer = setTimeout(() => {
             levelCompleteTimer = null;
-            gameState = 'levelComplete';
-            handleGameState();
-            playSound(sounds.levelComplete);
+            levelComplete();
         }, 1500);
 
         return;
@@ -262,7 +265,6 @@ function createNewFood () {
     };
     renderFood();
 }
-
 
 createNewFood ();
 
@@ -280,11 +282,46 @@ const sounds = {
     levelComplete: new Audio('./assets/sounds/level-complete.mp3'),
 };
 
+musicToggle.addEventListener('change', () => {
+    musicVolume.disabled = !musicToggle.checked;
+
+    if (!musicToggle.checked) {
+        musicVolume.value = 0;
+        musicVolumeText.textContent = '0%';
+    } else {
+        musicVolume.value = 30;
+        musicVolumeText.textContent = '30%';
+    }
+});
+
+soundToggle.addEventListener('change', () => {
+    soundVolume.disabled = !soundToggle.checked;
+
+    if (!soundToggle.checked) {
+        soundVolume.value = 0;
+        soundVolumeText.textContent = '0%';
+    } else {
+        soundVolume.value = 30;
+        soundVolumeText.textContent = '30%';
+    }
+});
+
+musicVolume.addEventListener('input', () => {
+    musicVolumeText.textContent = musicVolume.value + '%';
+});
+
+soundVolume.addEventListener('input', () => {
+    soundVolumeText.textContent = soundVolume.value + '%';
+});
+
+function getVolume(slider) {
+    return Number(slider.value) / 100;
+}
+
 function playMusic() {
     if (!musicToggle.checked) return;
     if (gameState !== 'play') return;
-    
-    backgroundMusic.volume = 0.3;
+    backgroundMusic.volume = getVolume(musicVolume);
     backgroundMusic.loop = true;
     backgroundMusic.play();
 }
@@ -297,8 +334,8 @@ function stopMusic() {
 function playSound(sound) {
     if (!soundToggle.checked) return;
 
+    sound.volume = getVolume(soundVolume);
     sound.currentTime = 0;
-    sound.volume = 0.3;
     sound.play();
 }
 
@@ -384,9 +421,7 @@ function handleCollision() {
 
         gameOverTimer = setTimeout(() => {
             gameOverTimer = null;
-            gameState = 'gameOver';
-            handleGameState();
-            playSound(sounds.gameOver);
+            endGame();
         }, 1500);
         
         return;
@@ -495,14 +530,10 @@ function shieldOn() {
 const snakeSnapshots = [];
 
 function recordPositions() {
-    const position = [];
-
-    for (let i = 0; i < snake.length; i++) {
-        position.push({
-            row: snake[i].row,
-            column: snake[i].column
-        });
-    }
+    const position = snake.map(segment => ({
+        row: segment.row,
+        column: segment.column
+    }));
 
     snakeSnapshots.push(position);
 
@@ -580,7 +611,7 @@ function moveSnake() {
 }
 
 
-// - Gmae States -
+// - Gmae States Management-
 function gameLoop() {
     moveSnake();
 
@@ -612,9 +643,9 @@ function resetGame() {
     gameOverTimer = null;
 
     snake = [
-        { row: 7, column: 7 },
-        { row: 7, column: 6 },
-        { row: 7, column: 5 }
+        { row: 3, column: 5 },
+        { row: 3, column: 4 },
+        { row: 3, column: 3}
     ];
 
     direction = {
@@ -647,13 +678,12 @@ function resetGame() {
 
 panelRestartBtn.addEventListener('click', () => {
     resetGame();
-    gameState = 'play';
-    handleGameState();
-    gameLoop();
+    playGame();
 });
 
 
-function handleGameState() {
+function updateUI() {
+
     panel.classList.remove(
         'home',
         'setting',
@@ -672,14 +702,12 @@ function handleGameState() {
     
     else if (gameState === 'gameSetting') {
         panel.classList.add('setting');
-
         headingTitle.textContent = 'Game Setting';
         headingIcon.className = "fa-solid fa-gear";
     }
 
     else if (gameState === 'gameInfo') {
         panel.classList.add('info');
-
         headingTitle.textContent = 'Game Information';
         headingIcon.className = "fa-solid fa-circle-info";
     }
@@ -687,21 +715,17 @@ function handleGameState() {
     else if (gameState === 'play') {
         gameStatus.classList.add('show');
         gameControlBox.classList.add('show');
-        playMusic();
     } 
     
     else if (gameState === 'pause') {
         panel.classList.add('pause');
-
         gameStatus.classList.add('show', 'inactive');
         gameControlBox.classList.add('show', 'inactive');
-        backgroundMusic.pause();
     } 
 
     else if (gameState === 'gameOver') {
         panel.classList.add('game-over');
         panelTxt.textContent = 'Game Over!!!';
-
         gameStatus.classList.add('show', 'inactive');
         gameControlBox.classList.add('show', 'inactive');    
     }
@@ -709,30 +733,80 @@ function handleGameState() {
     else if (gameState === 'levelComplete') {
         panel.classList.add('level-complete');
         panelTxt.textContent = 'Yaaay!!! You are the best! Try to play on another game board';
-
         gameStatus.classList.add('show', 'inactive');
         gameControlBox.classList.add('show', 'inactive');
     }
 }
-  
-handleGameState();
 
+function goHome() {
+    resetGame();
+    gameState = 'home';
+    updateUI();
+}
+
+function goSetting() {
+    gameState = 'gameSetting';
+    updateUI();
+}
+
+function goInfo() {
+    gameState = 'gameInfo';
+    updateUI();
+}
+
+
+function pauseGame() {
+    gameState = 'pause';
+    backgroundMusic.pause();
+    clearTimeout(gameTimer);
+    gameTimer = null;
+    updateUI();
+}
+
+function playGame() {
+    gameState = 'play';
+    updateUI();
+    playMusic();
+    gameLoop();
+}
+
+function endGame() {
+    gameState = 'gameOver';
+    updateUI();
+    playSound(sounds.gameOver);
+}
+
+function levelComplete() {
+    gameState = 'levelComplete';
+    updateUI();
+    playSound(sounds.levelComplete);
+}
+
+
+function handleGameState() {
+    if (gameState === 'home') {
+        goHome();
+    } else if (gameState === 'gameSetting') {
+        goSetting();
+    } else if (gameState === 'gameInfo') {
+        goInfo();
+    } else if (gameState === 'play') {
+        playGame();
+    } else if (gameState === 'pause') {
+        pauseGame();
+    } else if (gameState === 'gameOver') {
+        endGame();
+    } else if (gameState === 'levelComplete') {
+        levelComplete();
+    }
+}
+
+handleGameState();
 
 function handleClick(button, state) {
     button.addEventListener('click', () => {
         gameState = state;
         handleGameState();
-
-        if (state === 'play' && !gameOver && gameTimer === null) {
-            gameLoop();
-        }
-
-        if (state !== 'play') {
-            clearTimeout(gameTimer);
-            gameTimer = null;
-        }
-
-        if (button === panelHomeBtn) { resetGame(); }
     });
 }
 
@@ -751,9 +825,7 @@ const confirmationConfig = {
         message: 'Do you want to go home?',
         confirmText: 'Home',
         action: () => { 
-            gameState = 'home'; 
-            handleGameState(); 
-            resetGame();
+            goHome();
         }
     },
 
@@ -761,10 +833,8 @@ const confirmationConfig = {
         message: 'Do you want to restart the game?',
         confirmText: 'Restart',
         action: () => { 
-            resetGame(); 
-            gameState = 'play';
-            handleGameState();
-            gameLoop(); 
+            resetGame();
+            playGame();
         }
     }
 }
@@ -779,11 +849,7 @@ function showConfirmation(type) {
 
     panel.classList.add('confirmation');
 
-    gameState = 'pause';
-    handleGameState();
-
-    clearTimeout(gameTimer);
-    gameTimer = null;
+    pauseGame();
 }
 
 
@@ -803,9 +869,7 @@ confirmButton.addEventListener('click', () => {
 
 cancelButton.addEventListener('click', () => {
     panel.classList.remove('confirmation');
-    gameState = 'play';
-    handleGameState();
-    gameLoop();
+    playGame();
 });
 
 
@@ -838,8 +902,9 @@ function handleDirection(key) {
         case 'b':
             if (!isBoosting) {
                 isBoosting = true;
-                playSound(sounds.boost);
                 updateSpeed();
+                boost.classList.add('show'); 
+                if (!gameOver) { playSound(sounds.boost); }
             }
     }
 }
@@ -852,12 +917,12 @@ controlButtons.forEach(button => {
 });
 
 
-
 boostButton.addEventListener('pointerdown', () => {
+    if (gameState !== 'play') return;
     isBoosting = true;
     updateSpeed();
     boost.classList.add('show');
-    playSound(sounds.boost); 
+    if (!gameOver) { playSound(sounds.boost); }
 });
 
 boostButton.addEventListener('pointerup', () => {

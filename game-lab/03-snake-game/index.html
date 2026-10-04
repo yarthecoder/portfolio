@@ -25,7 +25,7 @@
         </section>
         
         <p>
-          The classic, old, simple snake game, looks might be kidding UI but serious <strong>JavaScript</strong> underneath, I built while learning DOM.
+          The classic, old-school Snake game. The UI might look simple, but there's some serious <strong>JavaScript</strong> underneath — built while learning the <strong>DOM</strong>.
         </p>
       </header>
       
@@ -151,23 +151,36 @@
                     </label>
                   </section>
                 </div>
+                <button id="apply-button">Apply</button>
                
                 <div class="sound-effect">
                   <h4>🔊 Sound Effect</h4>
                   <section class="checkbox-section">
-                    <label>
+                    <div class="checkbox-input">
+                      <label>   
                         <input id="music-toggle" type="checkbox" name="music" checked>
                         Music 🎵
-                    </label>
+                      </label>
+                      <label>
+                        <input id="music-volume" type="range" min="0" max="100" value="30">
+                      </label>
+                      <output id="music-volume-text" for="music-volume">30%</output>
+                    </div>
 
-                    <label>
+                    <div class="checkbox-input">
+                      <label>
                         <input id="sound-toggle" type="checkbox" name="sound" checked>
-                        Sound 🔉
-                    </label>
+                        Sound Fx 🔉
+                      </label>
+                      <label>   
+                        <input id="sound-volume" type="range" min="0" max="100" value="30">
+                      </label>
+                      <output id="sound-volume-text" for="sound-volume">30%</output>
+                    </div>
                   </section>
                 </div>
                 
-                <button id="apply-button">Apply</button>
+                
 
               </section>
 
@@ -175,63 +188,65 @@
 
                 <h2>How to Play the Game!</h2>
                 <p>
-                    A simple, classic, and fun Snake game where the player controls
-                    the snake and guides it toward food while avoiding collisions
-                    with the walls and itself.
+                  A simple, classic, and fun Snake game where the player controls the snake and guides it toward food while avoiding collisions with the walls and itself.
                 </p>
 
                 <h3>Rules</h3>
                 <p>
-                    If the snake collides with a wall or itself, it will lose one life.
-                    When the number of lives reaches 0, the game is over.
+                  If the snake collides with a wall or itself, it will lose one life. When the number of lives reaches 0, the game is over.
                 </p>
 
                 <p>
-                    The snake cannot turn directly in the opposite direction.
-                    For example, if the snake is moving from left to right,
-                    the player cannot immediately turn it back to the left.
-                    The snake also prevents some direction inputs when moving
-                    next to a wall. These restrictions help prevent the snake
-                    from immediately colliding with itself or the wall because
-                    of an input mistake.
+                  The snake cannot turn directly in the opposite direction. For example, if the snake is moving from left to right, the player cannot immediately turn it back to the left. The snake also prevents some direction inputs when moving next to a wall. These restrictions help prevent the snake from immediately colliding with itself or the wall because of an input mistake.
                 </p>
 
                 <h3>State and Conditions</h3>
                 <p>
-                    When the snake collides with itself or a wall, it loses one life.
-                    It then moves back to its previous three positions, and its speed
-                    slows down for three seconds as a safety period. During this situation,
-                    the snake will automatically turn toward the food to help the player
-                    recover from the collision.
+                  When the snake collides with itself or a wall, it loses one life. It then moves back to its previous three positions, and its speed slows down for three seconds as a safety period. During this situation,the snake will automatically turn toward the food to help the player recover from the collision.
                 </p>
 
                 <p>
-                    <video autoplay muted loop playsinline>
-                      <source src="assets/videos/shield-mode.mp4" type="video/mp4">
-                    </video>
-                    Shield mode will then be activated for about 10 seconds with the flash effect on the snake.
-                    During this time, the snake is protected from collisions with
-                    itself and the walls, giving the player time to control the snake
-                    and handle the difficult situation.
+                  <video autoplay muted loop playsinline>
+                    <source src="assets/videos/shield-mode.mp4" type="video/mp4">
+                  </video>
+                  After that, the snake activates Shield Mode for 10 seconds. During this time, it can hit the wall without losing a life, and it will automatically turn to avoid getting stuck. It can also pass through its own body without triggering another collision. The shield remains active for the full 10 seconds, giving the player time to recover and continue safely.
                 </p>
 
                 <h3>How to Control</h3>
                 <p>
-                    There are several control methods for both computer and mobile.
+                  There are several control methods for both computer and mobile.
                 </p>
 
                 <p>
-                  <img src="assets/images/snake-game-info-1.png" alt="keyboard keys image">
-                    On a computer, use the <strong>Arrow Keys</strong> keys or
-                    <strong>WASD</strong> to control the direction of the snake.
-                    <img src="assets/images/snake-game-info-2.png" alt="keyboard keys image">
-                    Press and hold the <strong>B</strong> key to boost the snake's speed.
-                    <img src="assets/images/snake-game-info-3.png" alt="game control button explaination image">
+                  <img src="assets/images/keyboard-arrow-key.png" alt="keyboard keys image">
+                  On a computer, use the <strong>Arrow Keys</strong> keys or
+                  <strong>WASD</strong> to control the direction of the snake.
+                  <img src="assets/images/keyboard-wasd-b-key.png" alt="keyboard keys image">
+                  Press and hold the <strong>B</strong> key to boost the snake's speed.
+                  <img src="assets/images/display-buttons.png" alt="game control button explaination image">
                 </p>
 
                 <p>
-                    On mobile, use the arrow buttons and boost button provided
-                    on the game display.
+                  On mobile, use the arrow buttons and boost button provided on the game display.
+                </p>
+
+                <h2>Game Settings</h2>
+
+                <h3>Dynamic Game Boards</h3>
+                <p>
+                  <video autoplay muted loop playsinline>
+                    <source src="assets/videos/game-settings.mp4" type="video/mp4">
+                  </video>
+                  You can change and play on three different game boards: Small (10 rows x 15 columns), Medium (15 rows x 20 columns), and Large (20 rows x 25 columns). Choose the game board you want to play on, then click the Apply button to activate it. After that, exit this panel and start the game.
+                </p>
+
+                <h3>Sound Control System</h3>
+                <p>
+                  You can turn music and sound effects on or off using the checkboxes, and control their volume with the dynamic sliders. I prefer 30% for both, which is the original default value, but you can change them to whatever you like.Playing with sound on is really fun!
+                </p>
+
+                <p>
+                  Unfortunately, saving your settings is not available yet. After refreshing the page, the game board and sound settings will return to their original default values, so you will need to apply your preferred settings again.
                 </p>
               </article>
 
@@ -276,10 +291,11 @@
 
       </section>
 
+
       <footer class="commitSection"> 
-        <span id="Commit">Project Commit: Date</span>
+        <span id="Commit">Project Commit: 30 September 2026</span>
         <span> 
-          <button class="readHideBtn">Read More ▼</button>
+          <button class="readNHide readBtn">Read More ▼</button>
         </span>
       </footer>
       
@@ -288,15 +304,17 @@
         <h2>What I learned from this Project</h2>
 
         <p>
-          First of all, I'm so greateful to <strong>Khan Academy</strong>, I got a lot for state managment and thinking logic. That concerpt I bring here for this game from my first ever game, <strong>Beaver Stick Collector</strong>, that I built on <strong>Khan Academy</strong>.
+          First of all, I'm so greateful to <strong>Khan Academy</strong>, I learned a lot about state managment and logical thinking there. I brought those concerpts into this game from my first ever game, <strong>Beaver Stick Collector</strong>, which I built on <strong>Khan Academy</strong>.
         </p>
 
         <p>
-          When I start to build the game, I just thought a simple and light sate manangment like I built previous 2 games. But I ended up with real and full state manange with the game. The snake looks might be simple color block but underneath JavaScript is real serious and nice state manangement that I ever written. So I want document carefully that I face up while building game.
+          When I started to build the game, I thought I would use simple and light state manangement, like I did in my previous two games. But I ended up building a much more complete state management system for the game. The snake might look like simple colored blocks, but underneath, there is some serious JavaScript and the most complete state management I have ever written. So I want to carefully document what I faced and learned while building this game.
         </p>
 
+
+        <h3>Game Board</h3>
         <P>
-          For this game, I start with game board, cells, that I built with CSS grid, rows and column like I built on memory game. One of the most I like that grid is I can change dynamic rows and  colums, different game boards that you can change in the setting.
+          For this game, I started with the game board and cells, which I built with CSS Grid using rows and columns, just like I did in my Memory game. One of the things I like most about this grid is that I can dynamically change the number of rows and columns, which allows me to create different game boards that you can change in the Game Setting.
         </P>
 
         <p> 
@@ -304,8 +322,275 @@
         </p>
 
 
+        <h3>Snake</h3>
+        <p>
+          Creating the snake was simple but interesting. I reused the game board's row and column data with a JavaScript array. I started with a three-segment snake, where each segment stores the row and column of its cell.
+        </p>
 
-        <button class="readHideBtn">Hide ▲</button>
+        <pre class="js-code"><code>
+          const snake = [ 
+              { row: 10, column: 10 },
+              { row: 10, column: 9 },
+              { row: 10, column: 8 }
+          ];
+        </code></pre>
+
+        <p>
+          The first item in the array is the head, while the remaining items make up the body and tail. Then I use CSS to give the head, body, and tail their own appearance.
+        </p>
+        
+
+        <h3>Food</h3>
+        <p>
+          Food creation is similar to the snake because it also reuses the game board's row and column data. The difference is that I randomly choose a row and column from the game board and use that position to render the food. 
+        </p>
+
+        <p>
+          At first, the food could appear on a cell already occupied by the snake. So I built a reusable function called <strong>occupied()</strong> to check whether a row and column are already being used by the snake.
+        </p>
+
+        <pre class="js-code"><code>
+          function occupied(row, column) {
+              return snake.some(segment =>
+                  segment.row === row &&
+                  segment.column === column
+              );
+          }
+        </code></pre>
+
+        <p>
+          I then use that function when creating new food. If the randomly selected cell is occupied, the program keeps looking for another position until it finds a free cell.
+        </p>
+
+        <p>
+          Eventually, the snake can occupy every cell on the board. At that point, there is no valid position left for new food. I added a separate game state and condition for this situation, "Level Complete". If you reach it, the game shows: "Yaaay!!! You are the best! Try to play on another game board."
+        </p>
+        <figure>
+          <img src="assets/images/level-completed.png" alt="snake game of level complete preview">
+
+          <figcaption>
+            Image 1.1 - Level completed preview
+          </figcaption>
+        </figure>
+
+        <h3>Movement and Direction</h3>
+        <p>
+          Here is the main section: snake movement. Before making any move, the snake has to know which direction it should move. So, I set the direction as:
+        </p>
+
+        <pre class="js-code"><code>
+            let direction = {
+                row: 0,
+                column: 1
+            };
+        </code></pre>
+
+        <p>
+          This means the snake is moving horizontally to the right.
+          The <strong>row</strong> value controls vertical movement, while the <strong>column</strong> value controls horizontal movement.
+        </p>
+
+        <p>
+          So, now the snake knows its direction. But how does it actually move? This is where the interesting part comes in with <strong>unshift()</strong>, a JavaScript array method.
+        </p>
+
+        <p>
+          The <strong>unshift()</strong> method adds one or more elements to the beginning of an array. In this game, I use it to add a new head to the beginning of the snake array.
+        </p>
+
+        <pre class="js-code"><code>
+          const newHead = {
+              row: snake[0].row + direction.row,
+              column: snake[0].column + direction.column
+          };
+
+          snake.unshift(newHead);
+        </code></pre>
+
+        <p>
+          Actually, right now the snake can't move by itself. So, I created a game loop using JavaScript's <strong>setTimeout()</strong> function and added the snake movement to the loop.
+        </p>
+
+        <pre class="js-code"><code>
+          function gameLoop() {
+              moveSnake();
+              setTimeout(gameLoop, 400);
+          }
+        </code></pre>
+
+        <p>
+          This makes the snake move in its current direction every <strong>400 milliseconds</strong>.
+        </p>
+
+        <p>
+          Now the snake gets a new head, but it would keep growing every time it moves because I am adding a new segment with <strong>unshift()</strong> without removing anything. That's not what I want for the game right now.
+        </p>
+
+       <p>
+          So, I use another JavaScript array method called <strong>pop()</strong>, which removes the last element from an array.
+        </p>
+
+        <p>
+          Now the snake can move without growing. Every time it makes a move, <strong>unshift()</strong> adds a new head and <strong>pop()</strong> removes the last segment. This makes the whole snake look like it is moving through the game board.
+        </p>
+
+        <p>
+          Here is the snake without the <strong>pop()</strong> function:
+        </p>
+
+        <figure>
+          <video autoplay muted loop playsinline>
+            <source src="assets/videos/snake-without-pop.mp4" type="video/mp4">
+          </video>
+          <figcaption>
+            Video 1.1 - Snake movement without <code>pop()</code>
+          </figcaption>
+        </figure>
+
+        <p>
+          Here is the snake with <strong>pop()</strong>:
+        </p>
+
+        <figure>
+          <video autoplay muted loop playsinline>
+            <source src="assets/videos/snake-with-pop.mp4" type="video/mp4">
+          </video>
+          
+          <figcaption>
+            Video 1.2 - Snake movement with <code>pop()</code>
+          </figcaption>
+        </figure>
+
+        <p>
+          The snake grows by one segment every time it eats food. This time, I skip the <strong>pop()</strong> function, so the new segment stays on the snake.
+        </p>
+
+        <figure>
+          <video autoplay muted loop playsinline>
+            <source src="assets/videos/snake-eating-food.mp4" type="video/mp4">
+          </video>
+
+          <figcaption>
+            Video 1.3 - Snake growth after eating food
+          </figcaption>
+        </figure>
+
+        <h3>Game States and Control Buttons</h3>
+        <p>
+          Since the game has reached a real game state, I provide buttons for each specific state, such as Home, Start, Restart, Pause, Play, Setting, and Info. The interesting thing is that all of these buttons and states work with one reusable display panel. The panel is managed with CSS and controlled with JavaScript. It appears on top of the game board when needed and stays hidden otherwise.
+        </p>
+
+        <p>
+          For game controls, since the game can be played on both computers and mobile devices, I created keyboard controls as well as on-screen control buttons for mobile. You can learn more about both controls in the Game Information section.
+        </p>
+
+        <p>
+          There is also an interesting condition with the direction controls. The snake does not immediately change its current direction when I press a control button. Instead, I store the requested direction in another variable called <strong>nextDirection</strong>.
+        </p>
+
+        <p>
+          I use <strong>direction</strong> for the direction the snake is currently moving and <strong>nextDirection</strong> for the direction it should move next. When the next game-loop update happens, I apply the requested direction.
+        </p>
+
+        <pre class="js-code"><code>
+          let nextDirection = {
+              row: 0,
+              column: 1
+          };
+
+          direction = nextDirection;
+        </code></pre>
+
+        <p>
+          I faced a similar problem with the game loop. Since the game loop uses <strong>setTimeout()</strong>, I need to control the existing timer before starting another one. I use <strong>clearTimeout()</strong> to stop the previous timer and then schedule the next game-loop update.
+        </p>
+
+        <pre class="js-code"><code>
+          function gameLoop() {
+              moveSnake();
+
+              if (!gameOver && gameState === 'play') {
+                  clearTimeout(gameTimer);
+                  gameTimer = setTimeout(gameLoop, snakeSpeed);
+              } else {
+                  gameTimer = null;
+              }
+          }
+        </code></pre>
+
+        <p>
+          This also gives me control over when the loop should stop, such as when the game is paused or when the game is over.
+        </p>
+
+        <h3>Essential Other Functions</h3>
+        <p>
+          I don't want the game to end simply by guiding the snake toward the food. So, I give the snake three lives as a chances. The rule is simple: every time the snake collides with itself or a wall, it loses one life. When its life reaches zero, the game is over. This thinking led me to create the following functions.
+        </p>
+
+        <p>
+          I also don't want the snake to simply lose one life and continue from the same dangerous position. So, I created a recovery system. When the snake collides, it first uses <strong>moveBack()</strong> to return to one of its previous positions.
+        </p>
+
+        <P>
+          But how can it move back? It needs to remember where it was before the collision. A JavaScript array helps me do that. I record the snake's previous positions in another array called <strong>snakeSnapshots</strong>. 
+        </P>
+
+        <p>
+          To create each snapshot, I use JavaScript's <strong>map()</strong> array method. It goes through every segment of the snake and creates a new object containing its row and column. This gives me a new array containing a copy of the snake's current positions. But I only need the last three snapshots, so I remove the older ones:
+        </p>
+
+        <pre class="js-code"><code>
+          const snakeSnapshots = [];
+
+          function recordPositions() {
+              const position = snake.map(segment => ({
+                  row: segment.row,
+                  column: segment.column
+              }));
+
+              snakeSnapshots.push(position);
+
+              if (snakeSnapshots.length > 3) {
+                  snakeSnapshots.shift();
+              }
+          }
+        </code></pre>
+          
+        <p>
+          <strong>shift()</strong> removes the first element from an array. So, whenever there are more than three snapshots, the oldest one is removed and the most recent three positions are kept.
+        </p>
+
+        <p>
+          After moving back, the snake slows down for three seconds. This gives the player some time to react and recover from the difficult situation.
+        </p>
+
+        <p>
+          Then, the snake activates <strong>shield mode</strong> for ten seconds. During this time, collisions with the wall and itself do not reduce another life. The snake also tries to turn away from the dangerous direction. Basically, the snake tries to turn toward the food, but when the food is in the same row or column as the snake, it chooses a safe direction.
+        </p>
+
+        <p>
+          These four functions — <strong>moveBack()</strong>, <strong>slowDown()</strong>, <strong>shieldOn()</strong>, and <strong>autoTurn()</strong> — work together to give the player a chance to recover from a difficult situation instead of immediately losing another life.
+        </p>
+
+        <h3>Conclusion</h3>
+        <p>
+          When I started this project, I thought I was going to build a simple
+          Snake game. But it became much more than that. I learned how different JavaScript concepts such as arrays, functions, conditions, loops, state management, timers, and DOM manipulation can work together to build a real game.
+        </p>
+
+        <p>
+          The UI may still look like a classic and simple Snake game, but underneath it has much more logic than I expected when I started. This project also taught me how to think about problems, break them into smaller functions, and improve my approach when my first idea didn't work.
+        </p>
+
+        <p>
+          I also have many ideas that I didn't add to this version, especially a more intelligent AI system that can find its own path toward the food. I would like to explore that in a future version rather than making this project unnecessarily complicated now.
+        </p>
+
+        <p>
+          For now, I am happy with what I built and, most importantly, with what I learned from building it.
+        </p>
+
+        <button class="readNHide hideBtn">Hide ▲</button>
       </section>
 
       </div>
