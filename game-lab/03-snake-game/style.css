@@ -28,7 +28,7 @@ main {
 }
 
 header {
-    padding: 2rem;
+    padding: 1rem;
 }
 
 #heading {
@@ -62,7 +62,7 @@ header {
 .commitSection {
     display: flex;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .readNHide {
