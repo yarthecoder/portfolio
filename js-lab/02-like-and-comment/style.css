@@ -1,6 +1,8 @@
 body {
     box-sizing: border-box;
     padding: 20px 20px;
+    display: flex;
+    justify-content: center;
 }
 
 main {
@@ -121,6 +123,5 @@ li {
     max-height: 100px;
     overflow: auto;
     border: 1px solid darkgrey;
-    
 }   
 

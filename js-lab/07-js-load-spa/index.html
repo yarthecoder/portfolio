@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <title>JS Load SPA</title>
+  </head>
+  
+  <body>
+    <main>
+      <div class="container">
+      <section id="heading">
+      <h2>9. JS Load SPA</h2>
+      <button id="expandBtn">
+        <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+      </button>
+      </section>
+      <p>
+        A vanilla JavaScript SPA experiment that started as a simple Header/Footer 
+        loading exercise and evolved into a reusable, scalable page-loading architecture. Later, I upgraded it with a dynamic project-loading system.
+      </p>
+
+
+      <!---------------------------------->
+      <!----- Demostration Section ------->
+      <div id="demoCanvasBody">
+
+        <header id="header">
+        <div class="container">
+          <section class="headerSection">
+            <button>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+            <h3><a href="pages/home.html" id="logo">yarTheJourney</a></h3>
+            <button id="themeBtn">
+              <i class="fa-regular fa-sun"></i>
+            </button>            
+          </section>
+
+          <nav id="naviLinks">
+            <a href="#" data-page="home">Home</a>
+            <a href="#" data-page="projects">Projects</a>
+            <a href="#" data-page="games">Games</a>
+            <a href="#" data-page="arts">Arts</a>
+            <a href="#" data-page="about">About</a>
+          </nav>
+        </div>
+        </header>
+
+        <div class="class">
+          <section id="demo-main"></section>
+        </div>
+
+        <footer id="footer">
+        <div class="container">
+          <section id="footer-social">
+            <a href="#">
+              <i class="fab fa-google"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-tiktok"></i>
+            </a>
+          </section>
+          
+          <div id="footer-links">
+            <a href="#">Terms of use</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+          <a class="footer-copy" href="#">
+            &copy; 2026 yarTheJourney. All rights reserved.
+          </a>
+        </div>
+        </footer>
+
+      </div>
+
+
+
+      <!---------------------------->
+      <!----- Commit Section ------->
+      <section class="commitSection">
+        <span id="Commit">Project Commit: 30 August 2026</span>
+        <span>
+          Source:
+          <a href="index.html" target="_blank">HTML</a>,
+          <a href="style.css" target="_blank">CSS</a>,
+          <a href="script.js" target="_blank">JS</a>.
+        </span>
+      </section>
+
+      <section class="commitSection"> 
+        <span>
+          Upgrade: 12 October 2026.
+        </span>
+        <span> 
+          <button class="readHideBtn">Read More ▼</button>
+        </span>
+      </section>
+      
+
+      <section id="readMore">
+        <h2>What I learned from this Project</h2>
+        <P>
+          index.html<br>
+          │<br>
+          ├── Header       ← permanent<br>
+          │<br>
+          ├── Main Pages ← JavaScript loads:<br>  
+          │     │─     home.html<br>
+          │     │─     projects.html<br>
+          │     │─      games.html<br>
+          │     └─     about.html<br>
+          │<br>
+          └── Footer       ← permanent<br>
+        </P>
+
+        <p>
+          Actually, I just wanted to learn how to load the Header and Footer with JavaScript before moving to React. 
+          But while building it, my approach changed into a Single-Page Application (SPA). I realized that having to 
+          repeat the same code across multiple pages felt unsatisfying, so I started thinking carefully about which elements 
+          need to change and which should remain persistent. That thinking led me to build an SPA almost by accident.<br><br>
+          Coding is fun. The more I think, the more ways I discover. The more I build, the more I face the challenge of making things scalable, 
+          reusable, clean, and well-structured. I can't stop coding.
+        </p>
+
+        <h2>Dynamic Project Loader — SPA Upgrade</h2>
+        <p>
+          After learning and completing the page loader described above, I started upgrading my website into a Single Page Application (SPA). I began adding my projects and games directly into their respective HTML pages. But after adding several projects, I started thinking: “Wait, could I load projects dynamically, just like I load a page?”
+        </p>
+        <p>
+          That question led me to build this dynamic project loader, making my SPA more flexible and easier to maintain. Instead of manually writing every project card in HTML, I moved the project information into JavaScript data arrays and created reusable functions to generate and display project cards dynamically.
+        </p>
+
+        <h3>Storing Data</h3>
+        <p>
+          First, I stored the project information in arrays of objects, including titles, descriptions, categories, programming languages, preview images, project links, dates, and view counts. These are the properties I use to build my project cards.
+        </p>
+        <p>
+          Then, I used JavaScript array methods to organize the data into different sections. For the Latest Projects section, I used sort() to arrange projects by date, from newest to oldest, and slice() to control how many cards to display.
+        </p>
+        <p>
+          For the Popular Projects section, I used the view counts stored in the data. I sorted the projects by their views and used slice() to display the most popular ones. For now, these view counts are manually defined in the data. In the future, I plan to upgrade this feature to use a database when I'm ready to work with one. That's one of the exciting possibilities of this system.
+        </p>
+        <p>
+          For the Featured Projects section, the logic is simple: I added a feature property to each project. If its value is true, that project appears in the featured section.
+        </p>
+        <p>
+          For the All Projects section, I rendered the entire project collection. I also created separate data arrays for upcoming projects and games. Keeping these collections organized makes the system easier to maintain and gives me a clear place to add new projects in the future.
+        </p>
+        <p>
+          Testing error handling: I also created "Art" page that doesn't actually exist to test what happens when a page fails to load. When I try to load that page, the website displays the message, “The page could not be loaded.” This helped me check whether my error-handling logic works as expected.
+        </p>
+
+        <h3>Rendering and Loading Data On Pages</h3>
+        <p>
+          After storing the data, I created reusable functions to generate and render project cards.
+        </p>
+        <p>
+          The projectCard(project) function builds an individual card from a project object, while renderProject(projects, place) takes a collection of projects and renders them into their designated HTML container.
+        </p>
+        <p>
+          I then created separate functions for rendering the content on the Home, Projects, and Games pages. Each function handles the sections belonging to its page, such as featured, latest, popular, all, and upcoming projects or games.
+        </p>
+        <p>
+          Finally, I connected these functions through a single loadProjects(page) function. After loadPage() fetches and inserts the requested HTML page, it calls loadProjects(page) to render the appropriate content.
+        </p>
+        <p>
+          This means the HTML provides the containers, while JavaScript supplies the data and builds the project cards dynamically.
+        </p>
+
+
+        <h3>Conclusion</h3>
+        <p>
+          This upgrade helped me understand how to separate data, rendering logic, and page structure.
+
+          I also learned that a single collection of project data can power multiple sections, such as Featured Projects, Latest Projects, Popular Projects, and All Projects, without rebuilding the same cards for each section.
+
+          What I especially love about this system is that whenever I finish a new project, I only need to add its information to the data array instead of writing multiple lines of HTML for every card. The system then uses that data to generate the cards wherever they're needed.
+
+          Most importantly, I learned to turn a question that came from my own coding experience into a practical solution.
+        </p>
+        <p>
+          Thank you so much for your time and for scrolling all the way down here! This is what I've discovered and built so far while learning the DOM with vanilla JavaScript, before moving on to React.
+        </p>
+        <p>
+          This is another step in my journey of learning, experimenting, and building things from scratch.
+        </p>
+
+
+        <button class="readHideBtn">Hide ▲</button>
+      </section>
+
+      </div>
+
+    </main>
+    <script src="js/script.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+
+</html>

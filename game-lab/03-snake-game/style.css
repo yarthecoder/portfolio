@@ -267,8 +267,8 @@ header {
 
 #panel {
     background-color: rgba(45, 45, 45, 0.2);
-    backdrop-filter: blur(0.5px);
-    -webkit-backdrop-filter: blur(0.5px);
+    backdrop-filter: blur(2.5px);
+    -webkit-backdrop-filter: blur(2.5px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -311,11 +311,11 @@ header {
 
     .panel-text{
         display: none;
-        background-color: rgb(20, 20, 20);
         color: white;
-        padding: 20px;
-        border-radius: 10px;
-        font-size: 30px;
+        font-family: 'Press Start 2P', monospace;
+        line-height: 2rem;
+        text-transform: uppercase;
+        font-size: 26px;
         font-weight: bold;
         text-align: center;
     }
@@ -344,10 +344,13 @@ header {
 
             .tooltip {
                 color: white;
-                font-size: 18px;
+                font-family: 'Press Start 2P', monospace;
+                text-transform: uppercase;
+                font-size: 14px;
+                font-weight: bold;
                 position: absolute;
                 white-space: nowrap;
-                top: 55px;
+                top: 60px;
                 left: 50%;
                 transform: translateX(-50%);
                 pointer-events: none;
@@ -546,6 +549,8 @@ header {
 
     .panel-text {
         display: block;
+        color: red;
+        font-size: 34px;
     }
 
     .restart-button {
@@ -566,7 +571,8 @@ header {
 
     .panel-text {
         display: block;
-        
+        font-size: 20px;
+        color: limegreen;
     }
 
     .setting-button {

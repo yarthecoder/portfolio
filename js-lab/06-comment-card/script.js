@@ -166,7 +166,7 @@ function buildCommentStructure(commentHeader, message, actionBtnsBar, replyArea)
 
 // -- COMMENT SYSTEM ELEMENTS -- //
 // Cancel Button
-function createCancelButton(commentInput) {
+function createCancelButton() {
     const cancelButton = document.createElement('button');
     cancelButton.classList.add('cancelButton');
 
