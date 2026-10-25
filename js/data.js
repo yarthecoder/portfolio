@@ -176,8 +176,8 @@ const gamesData = [
         languages: "JavaScript, CSS, HTML",
         views: 100,
         feature: false,
-        preview: "/assets/images/screenshot-tic-tac-toe.png",
-        projectUrl: "/game-lab/01-tic-tac-toe/",
+        preview: "../assets/images/screenshot-tic-tac-toe.png",
+        projectUrl: "../game-lab/01-tic-tac-toe/",
         projectUrlTxt: 'To Game',
         date: "2026-08-13"
     },
@@ -192,8 +192,8 @@ const gamesData = [
         languages: "JavaScript, CSS",
         views: 120,
         feature: true,
-        preview: "/assets/images/screenshot-memory-match.png",
-        projectUrl: "/game-lab/02-memory-match/",
+        preview: "../assets/images/screenshot-memory-match.png",
+        projectUrl: "../game-lab/02-memory-match/",
         projectUrlTxt: 'To Game',
         date: "2026-08-27"
     },
@@ -208,8 +208,8 @@ const gamesData = [
         languages: "JavaScript, CSS, HTML",
         views: 120,
         feature: true,
-        preview: "/assets/images/screenshot-snake-game.png",
-        projectUrl: "/game-lab/03-snake-game/index.html",
+        preview: "../assets/images/screenshot-snake-game.png",
+        projectUrl: "../game-lab/03-snake-game/index.html",
         projectUrlTxt: 'To Game',
         date: "2026-09-30"
     }
@@ -231,7 +231,7 @@ const upcomingGames = [
         projectUrlTxt: "",
         date: ""
     },
-    
+
     {
         id: 2,
         slug: "connect-four",
