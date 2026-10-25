@@ -1,0 +1,22 @@
+#home-page {
+    #hero-section {
+        
+        #hello {
+            font-size: 24px;
+            color: rgb(200, 0, 255);
+            font-size: clamp(22px, 2.5vw, 28px);
+            text-transform: uppercase;
+        }
+
+        #web-developer {
+            color: rgb(200, 0, 255);
+            font-size: clamp(22px, 2.5vw, 28px);
+        }
+    }
+
+    #feature-projects h4{
+        color: var(--secondary-color);
+        margin: 3rem 0 2rem;
+        font-size: 24px;
+    }
+}

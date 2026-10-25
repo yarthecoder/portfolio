@@ -725,14 +725,14 @@ function updateUI() {
 
     else if (gameState === 'gameOver') {
         panel.classList.add('game-over');
-        panelTxt.textContent = 'Game Over!!!';
+        panelTxt.textContent = 'Game Over!';
         gameStatus.classList.add('show', 'inactive');
         gameControlBox.classList.add('show', 'inactive');    
     }
 
     else if (gameState === 'levelComplete') {
         panel.classList.add('level-complete');
-        panelTxt.textContent = 'Yaaay!!! You are the best! Try to play on another game board';
+        panelTxt.textContent = 'Yaaay! You are the best. Try to play on another game board.';
         gameStatus.classList.add('show', 'inactive');
         gameControlBox.classList.add('show', 'inactive');
     }
