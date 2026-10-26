@@ -10,8 +10,8 @@ const projectsData = [
         languages: "JavaScript, CSS, HTML",
         views: 10,
         feature: true,
-        preview: "/assets/images/light-bulb-preview.png",
-        projectUrl: "/js-lab/01-light-bulb/index.html",
+        preview: "assets/images/light-bulb-preview.png",
+        projectUrl: "js-lab/01-light-bulb/index.html",
         projectUrlTxt: 'To Project',
         date: "2026-07-09" 
     },
@@ -26,8 +26,8 @@ const projectsData = [
         languages: "HTML, JavaScript, CSS",
         views: 10,
         feature: false,
-        preview: "/assets/images/like-and-comment-preview.png",
-        projectUrl: "/js-lab/02-like-and-comment/index.html",
+        preview: "assets/images/like-and-comment-preview.png",
+        projectUrl: "js-lab/02-like-and-comment/index.html",
         projectUrlTxt: 'To Project',
         date: "2026-07-10"
     },
@@ -43,7 +43,7 @@ const projectsData = [
         views: 10,
         feature: false,
         preview: "#",
-        projectUrl: "/js-lab/03-social-post/index.html",
+        projectUrl: "js-lab/03-social-post/index.html",
         projectUrlTxt: 'To Project',
         date: "2026-07-12"
     },
@@ -58,8 +58,8 @@ const projectsData = [
         languages: "CSS, HTML, JavaScript",
         views: 10,
         feature: false,
-        preview: "/assets/images/dark-mode-preview.png",
-        projectUrl: "/css-lab/01-dark-mode/index.html",
+        preview: "assets/images/dark-mode-preview.png",
+        projectUrl: "css-lab/01-dark-mode/index.html",
         projectUrlTxt: 'To Project',
         date: "2026-07-13"
     },
@@ -74,8 +74,8 @@ const projectsData = [
         languages: "CSS, HTML, JavaScript",
         views: 100,
         feature: false,
-        preview: "/assets/images/themes-preview.png",
-        projectUrl: "/css-lab/02-themes/index.html",
+        preview: "assets/images/themes-preview.png",
+        projectUrl: "css-lab/02-themes/index.html",
         projectUrlTxt: 'To Project',
         date: "2026-07-16"
     },
@@ -90,8 +90,8 @@ const projectsData = [
         languages: "JavaScript, HTML, CSS",
         views: 10,
         feature: false,
-        preview: "/assets/images/search-box-preview.png",
-        projectUrl: "/js-lab/04-search-box/index.html",
+        preview: "assets/images/search-box-preview.png",
+        projectUrl: "js-lab/04-search-box/index.html",
         projectUrlTxt: 'To Project',
         date: "2026-07-17"
     },
@@ -106,8 +106,8 @@ const projectsData = [
         languages: "JavaScript, CSS, HTML",
         views: 10,
         feature: false,
-        preview: "/assets/images/brightness-slider-preview.png",
-        projectUrl: "/js-lab/05-brightness-slider/index.html",
+        preview: "assets/images/brightness-slider-preview.png",
+        projectUrl: "js-lab/05-brightness-slider/index.html",
         projectUrlTxt: 'To Project',
         date: "2026-07-19"
     },
@@ -122,8 +122,8 @@ const projectsData = [
         languages: "JavaScript, CSS, HTML",
         views: 1000,
         feature: true,
-        preview: "/assets/images/comment-card-preview.png",
-        projectUrl: "/js-lab/06-comment-card/index.html",
+        preview: "assets/images/comment-card-preview.png",
+        projectUrl: "js-lab/06-comment-card/index.html",
         projectUrlTxt: 'To Project',
         date: "2026-08-20"
     },
@@ -138,8 +138,8 @@ const projectsData = [
         languages: "JavaScript, CSS, HTML",
         views: 10000,
         feature: true,
-        preview: "/assets/images/js-load-spa-preview.png",
-        projectUrl: "/js-lab/07-js-load-spa/index.html",
+        preview: "assets/images/js-load-spa-preview.png",
+        projectUrl: "js-lab/07-js-load-spa/index.html",
         projectUrlTxt: 'To Project',
         date: "2026-08-30"
     }    
@@ -176,8 +176,8 @@ const gamesData = [
         languages: "JavaScript, CSS, HTML",
         views: 100,
         feature: false,
-        preview: "../assets/images/screenshot-tic-tac-toe.png",
-        projectUrl: "../game-lab/01-tic-tac-toe/",
+        preview: "assets/images/screenshot-tic-tac-toe.png",
+        projectUrl: "game-lab/01-tic-tac-toe/",
         projectUrlTxt: 'To Game',
         date: "2026-08-13"
     },
@@ -192,8 +192,8 @@ const gamesData = [
         languages: "JavaScript, CSS",
         views: 120,
         feature: true,
-        preview: "../assets/images/screenshot-memory-match.png",
-        projectUrl: "../game-lab/02-memory-match/",
+        preview: "assets/images/screenshot-memory-match.png",
+        projectUrl: "game-lab/02-memory-match/",
         projectUrlTxt: 'To Game',
         date: "2026-08-27"
     },
@@ -208,8 +208,8 @@ const gamesData = [
         languages: "JavaScript, CSS, HTML",
         views: 120,
         feature: true,
-        preview: "../assets/images/screenshot-snake-game.png",
-        projectUrl: "../game-lab/03-snake-game/index.html",
+        preview: "assets/images/screenshot-snake-game.png",
+        projectUrl: "game-lab/03-snake-game/index.html",
         projectUrlTxt: 'To Game',
         date: "2026-09-30"
     }

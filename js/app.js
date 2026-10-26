@@ -71,12 +71,13 @@ async function handleRouteChange() {
         updateTitle(hash);
         return;
     }
-
+    /*
     const target = document.getElementById(hash);
 
     if (target) {
         target.scrollIntoView();
     }
+    */
 }
 
 window.addEventListener('hashchange', handleRouteChange);
